@@ -25,13 +25,27 @@ table td {
 
 
 }
+.abc{
+    padding-top: 10px;
+}
 
 .glyphicon-plus{
     color: white;
+}
+.glyphicon-ok
+{
+    color:white;
+}
+.dow{
+    padding-top:5px;
+    padding-bottom: 10px;
 }
 .glyphicon-user{
     color: white;
 }
 .glyphicon-chevron-left{
     color: white;
+}
+.navbar-header{
+    width: 100%;
 }
