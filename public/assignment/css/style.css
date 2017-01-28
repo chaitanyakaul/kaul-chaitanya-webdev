@@ -7,8 +7,8 @@ body {
     padding-bottom: 70px;
 }
 .navbar-default {
-    background-color: #6bc1ff;
-    border-color: #E7E7E7;
+    background-color: #428BCA;
+    border-color: white;
 }
 
 /* title */
@@ -16,15 +16,13 @@ body {
     color: #f5fff5;
 }
 
+
+
 table td {
     border-top: none !important;
 }
 
-.glyphicon-cog{
-    margin-right: -50px;
 
-
-}
 .abc{
     padding-top: 10px;
 }
@@ -45,7 +43,25 @@ table td {
 }
 .glyphicon-chevron-left{
     color: white;
+
+
 }
 .navbar-header{
-    width: 100%;
+        width: 100%;
+    }
+
+.navbar-brand{
+    widows:100%;
+}
+
+.center-me{
+    text-align: center
+}
+
+li.borderless {
+    border-top: 0 none;
+    border-left: 0 none;
+    border-right: 0 none;
+    border-bottom: 0 none;
+
 }

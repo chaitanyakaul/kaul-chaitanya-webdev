@@ -1,0 +1,40 @@
+.navbar-default {
+    background-color: #428BCA;
+    border-color: white;
+}
+
+
+.navbar-default .navbar-brand {
+    color: #f5fff5;
+}
+
+body {
+    padding-top: 60px;
+    padding-bottom: 70px;}
+
+.glyphicon-chevron-left{
+    color: white;
+}
+.glyphicon-plus{
+    color: white;}
+.glyphicon-ok{
+    color:white;
+}
+
+
+li.borderless {
+    border-top: 0 none;
+    border-left: 0 none;
+    border-right: 0 none;
+    border-bottom: 0 none;
+
+}
+
+.glyphicon-user{
+    color:white;
+}
+
+.border{
+   border-right: solid;
+    border-width: 1px;
+}
