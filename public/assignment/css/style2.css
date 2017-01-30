@@ -38,3 +38,19 @@ li.borderless {
    border-right: solid;
     border-width: 1px;
 }
+
+.a-setting{
+    margin-left: 0px;
+}
+
+.b-setting{
+    margin-right: 30px
+
+}
+.c-setting{
+
+    margin-left: 0px;
+}
+.d-setting{
+    margin-right: 0px;
+}
