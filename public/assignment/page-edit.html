@@ -4,48 +4,97 @@
     <meta charset="UTF-8">
     <title>Edit Page</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
-    <link href="css/style.css" rel="stylesheet"/>
+    <link href="css/style2.css" rel="stylesheet"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 </head>
 <body>
-
 <nav class="navbar navbar-default navbar-fixed-top">
-    <div class="container-fluid ">
-
-        <div class = "navbar-header">
-            <div class="navbar-text pull-left">
-                <a href="page-list.html">
-                <span class="glyphicon glyphicon-chevron-left">
-            </span>
+    <div class="row container-fluid">
+        <div class="col-sm-4 hidden-xs">
+            <div class="navbar-text pull-left a-setting">
+                <a href="website-list.html">
+                    <span class="glyphicon glyphicon-chevron-left"></span>
                 </a>
             </div>
-            <a class = "navbar-brand" href = "#">Edit Page</a>
-            <div class="navbar-text pull-right">
-                <a href="page-list.html">
-            <span class="glyphicon glyphicon-ok">
-            </span>
+            <div class="navbar-header">
+                <a class="navbar-brand" href="widget-list.html">
+                    Pages
+                </a>
+            </div>
+            <div class="navbar-text pull-right b-setting">
+                <a href="page-new.html">
+                    <span class="glyphicon glyphicon-plus"></span>
                 </a>
             </div>
         </div>
-
+        <div class="col-sm-8">
+            <div class="navbar-text pull-left c-setting">
+                <a href="page-list.html">
+                    <span class="glyphicon glyphicon-chevron-left"></span>
+                </a>
+            </div>
+            <div class="navbar-text pull-right d-setting">
+                <a href="page-list.html">
+                    <span class="glyphicon glyphicon-ok"></span>
+                </a>
+            </div>
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">
+                    Edit Page
+                </a>
+            </div>
+        </div>
     </div>
 </nav>
 
-<div class="container abc">
-    Name:
-    <input type="text"
-           class="form-control"
-           placeholder="Page Name"/>
-    Title:
-    <input type="text"
-           class="form-control"
-           placeholder="Page Title"/>
+<div class="row container-fluid">
+    <div class="col-sm-4 hidden-xs border"
+         style="overflow-y: scroll;top: 0px;bottom: 0px;position: absolute;left: 0px;margin-top: 50px;padding-top: 15px;margin-bottom: 50px;">
+        <ul class="list-group">
 
-</div>
-<div class="container">
-<a class="btn btn-danger btn-block"
-   href="page-list.html">Delete</a>
+            <li class="list-group-item borderless">Blog Post
+                <a href="page-edit.html">
+                    <span class="glyphicon glyphicon-cog pull-right"></span>
+                </a>
+            </li>
+            <li class="list-group-item borderless">Blog
+                <a href="page-edit.html">
+                    <span class="glyphicon glyphicon-cog pull-right"></span>
+                </a>
+            </li>
+            <li class="list-group-item borderless">Home
+                <a href="page-edit.html">
+                    <span class="glyphicon glyphicon-cog pull-right"></span>
+                </a>
+            </li>
+            <li class="list-group-item borderless">About Us
+                <a href="page-edit.html">
+                    <span class="glyphicon glyphicon-cog pull-right"></span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="col-xs-12 col-sm-8 pull-right">
+        <form>
+            <div class="form-group">
+                <label for="exampleInputEmail1">Name</label>
+                <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Page Name">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail2">Title</label>
+                <input type="text" class="form-control" id="exampleInputEmail2" placeholder="Page Title">
+
+            </div>
+
+            <a class="btn btn-danger btn-block"
+               href="page-list.html">Delete</a>
+
+
+        </form>
+
+    </div>
+
 </div>
 <nav class="navbar navbar-default navbar-fixed-bottom">
     <div class="container-fluid">
@@ -56,5 +105,9 @@
         </div>
     </div>
 </nav>
+
+
 </body>
+
+
 </html>
