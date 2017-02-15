@@ -40,7 +40,8 @@
             "deleteWidget": deleteWidget,
             "findWidgetById": findWidgetById,
             "createImageWidget": createImageWidget,
-            "createYoutubeWidget": createYoutubeWidget
+            "createYoutubeWidget": createYoutubeWidget,
+            "createHtmlWidget": createHtmlWidget
 
 
         };
@@ -53,6 +54,17 @@
           widget.widgetType ="HEADER";
           widget.pageId = pageId;
           widgets.push(widget);
+            return widget._id;
+
+        }
+
+
+        function createHtmlWidget(pageId) {
+            var widget = new Object();
+            widget._id = getRandomInt(100,999).toString();
+            widget.widgetType ="HTML";
+            widget.pageId = pageId;
+            widgets.push(widget);
             return widget._id;
 
         }

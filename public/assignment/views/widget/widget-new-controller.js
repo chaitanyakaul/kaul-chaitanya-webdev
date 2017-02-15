@@ -17,6 +17,7 @@
         vm.createYoutubeWidget = createYoutubeWidget;
         vm.goBackToList = goBackToList;
         vm.gotoProfile = gotoProfile;
+        vm.createHtmlWidget = createHtmlWidget;
 
         function createHeaderWidget() {
             var abc = WidgetService.createHeaderWidget(vm.pageId)
@@ -36,6 +37,11 @@
             $location.url("/user/"+vm.userId+"/website/"+vm.websiteId+"/page/"+vm.pageId+"/widget/"+abc);
         }
 
+        function createHtmlWidget()
+        {
+            var abc = WidgetService.createHtmlWidget(vm.pageId);
+            $location.url("/user/"+vm.userId+"/website/"+vm.websiteId+"/page/"+vm.pageId+"/widget/"+abc);
+        }
 
         function getEditorTemplateUrl(type) {
             return 'views/widget/widget-'+type+'-editor.view.client.html';
