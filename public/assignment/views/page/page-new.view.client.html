@@ -3,7 +3,7 @@
     <div class="row container-fluid">
         <div class="col-sm-4 hidden-xs">
             <div class="navbar-text pull-left a-setting">
-                <a href="profile.html">
+                <a ng-click="model.gotoPageList()">
                     <span class="glyphicon glyphicon-chevron-left"></span>
                 </a>
             </div>
@@ -12,11 +12,7 @@
                 Pages
             </a>
 
-            <div class="navbar-text pull-right b-setting">
-                <a href="website-new.html">
-                    <span class="glyphicon glyphicon-plus"></span>
-                </a>
-            </div>
+
         </div>
         <div class="col-sm-8">
             <div class="navbar-text pull-left c-setting hidden-lg hidden-md hidden-sm">
@@ -39,12 +35,12 @@
 </nav>
 
 <div class="row container-fluid">
-    <div class="col-sm-4 hidden-xs">
+    <div class="col-sm-4 hidden-xs border styler-four">
         <ul class="list-group">
             <li class="list-group-item">
                 <div class="row">
                     <div class="col-xs-10">
-                        Name
+                        Page Name
                         <span class="glyphicon glyphicon-triangle-top"></span>
                     </div>
                     <div class="col-xs-2">
@@ -60,7 +56,7 @@
                         {{page.name}}
                     </div>
                     <div class="col-xs-2">
-                        <a href="/user/{{model.userId}}/website/{{website._id}}">
+                        <a ng-click="model.goToEdit(page)">
                             <span class="glyphicon glyphicon-cog pull-right"></span>
                         </a>
                     </div>

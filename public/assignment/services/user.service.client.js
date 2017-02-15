@@ -51,9 +51,6 @@
         {
             user._id=getRandomInt(100,999).toString();
             users.push(user);
-            //users.username.push(password);
-            //to be tested
-          console.log(users);
             return user._id;
         }
 

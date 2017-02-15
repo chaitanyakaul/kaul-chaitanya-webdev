@@ -13,7 +13,6 @@
         vm.pageId = $routeParams.pid;
         vm.goBackToPageList = goBackToPageList;
         vm.goToEdit = goToEdit;
-        //vm.goToRespectiveWidget = goToRespectiveWidget;
         vm.updatePage = updatePage;
         vm.deletePage = deletePage;
         vm.gotoProfile = gotoProfile;
@@ -24,15 +23,12 @@
         }
         init();
         function deletePage(pages){
-            console.log("delete hit");
             var a = PageService.deletePage(vm.pageId);
             $location.url("/user/"+vm.userId+"/website/"+vm.websiteId+"/page");
         };
 
         function updatePage (pages) {
-            console.log(vm.pagess);
             var a = PageService.updatePage(vm.pageId,vm.pagess);
-            //$location.url("/user/"+vm.userId+"/website/"+vm.websiteId+"/page");
             $location.url("/user/"+vm.userId+"/website/"+vm.websiteId+"/page");
 
 

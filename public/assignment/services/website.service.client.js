@@ -50,7 +50,6 @@
                {
                    websites[w].name = website;
                    websites[w].description=websiteDescription;
-                   console.log(websites[w].name);
                }
            }
        }

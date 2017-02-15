@@ -22,13 +22,11 @@
 
       function updateWebsite(websiteName,websiteDescription)
       {
-          console.log("Hit")
           var a = WebsiteService.updateWebsite(vm.websiteId,websiteName,websiteDescription);
           $location.url("/user/"+vm.userId+"/website");
       }
 
         function deleteWebsite () {
-            console.log("hit")
             WebsiteService.deleteWebsite(vm.websiteId);
             $location.url("/user/"+vm.userId+"/website");
         };

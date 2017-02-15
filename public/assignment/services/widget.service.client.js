@@ -100,7 +100,6 @@
         function findWidgetById(widgetId) {
             for(var w in widgets) {
                 if(widgets[w]._id === widgetId) {
-                    console.log("one hit")
                     return angular.copy(widgets[w]);
                 }
             }
@@ -139,7 +138,7 @@
                     widgets.splice(w, 1);
                 }
             }
-            console.log(widgets);
+
         }
 
         }

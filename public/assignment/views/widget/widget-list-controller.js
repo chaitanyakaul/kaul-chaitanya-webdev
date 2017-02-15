@@ -15,7 +15,6 @@
         vm.websiteId = $routeParams.wid;
         vm.pageId = $routeParams.pid;
         vm.widgets = WidgetService.findWidgetsByPageId(vm.pageId);
-        console.log(vm.widgets);
         vm.gotoCreate = gotoCreate;
 
         vm.goBackToProfile = goBackToProfile;

@@ -14,7 +14,6 @@
             var loginUser = UserService.findUserByCredentials(user.username, user.password);
             if(loginUser != null) {
                 $location.url('/profile/' + loginUser._id);
-                console.log(loginUser._id);
             } else {
                 vm.error = 'user not found';
             }
