@@ -15,6 +15,9 @@
         vm.websiteId = $routeParams.wid;
         vm.pageId = $routeParams.pid;
         vm.widgets = WidgetService.findWidgetsByPageId(vm.pageId);
+        console.log(vm.widgets);
+        vm.gotoCreate = gotoCreate;
+
         vm.goBackToProfile = goBackToProfile;
         vm.gotoProfile = gotoProfile;
 
@@ -35,6 +38,10 @@
             return $sce.trustAsResourceUrl(url);
         }
 
+        function gotoCreate()
+        {
+            $location.url("/user/"+vm.userId+"/website/"+vm.websiteId+"/page/"+ vm.pageId+ "/widget/new");
+        }
 
         function goBackToProfile()
         {

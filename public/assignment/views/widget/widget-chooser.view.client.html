@@ -1,24 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Choose Widget</title>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
-    <link href="../css/style.css" rel="stylesheet"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-</head>
+
 <body>
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid ">
 
         <div class = "navbar-header">
             <div class="navbar-text pull-left">
-                <a href="widget-list.view.client.html">
+                <a ng-click="model.goBackToList()">
                 <span class="glyphicon glyphicon-chevron-left">
             </span>
                 </a>
             </div>
-            <a class = "navbar-brand" href = "#">Choose Widget</a>
+            <a class = "navbar-brand">Choose Widget</a>
 
         </div>
 
@@ -27,54 +19,32 @@
 
 <div class="container">
     <ul class="list-group">
-        <a href = "widget-HEADER.view.client.html">
+        <a ng-click="model.createHeaderWidget()" style="cursor: pointer;">
         <li class="list-group-item borderless">Header
         </a>
         </li>
-        <li class="list-group-item borderless">Label
 
-        </li>
-        <li class="list-group-item borderless">HTML
-
-        </li>
-        <li class="list-group-item borderless">Text Input
-
-        </li>
-        <li class="list-group-item borderless">Link
-
-        </li>
-        <li class="list-group-item borderless">Button
-
-        </li>
-
-        <a href = "widget-HEADER.view.client.html">
+        <a ng-click="model.createImageWidget()" style="cursor: pointer;">
         <li class="list-group-item borderless">Image
 
         </li></a>
 
-        <a href="widget-YOUTUBE.view.client.html">
+        <a ng-click="model.createYoutubeWidget()" style="cursor: pointer;">
         <li class="list-group-item borderless">Youtube
 
         </li>
         </a>
 
-        <li class="list-group-item borderless">Data Table
-
-        </li>
-        <li class="list-group-item borderless">Repeater
-
-        </li>
     </ul>
+
 
 </div>
 <nav class="navbar navbar-default navbar-fixed-bottom">
     <div class="container-fluid">
         <div class="navbar-text pull-right">
-            <a href="#" class="">
+            <a ng-click="model.gotoProfile()" style="cursor: pointer;" class="">
                 <span class="glyphicon glyphicon-user"></span>
             </a>
         </div>
     </div>
 </nav>
-</body>
-</html>

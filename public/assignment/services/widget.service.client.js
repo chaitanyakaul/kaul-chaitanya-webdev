@@ -34,21 +34,57 @@
         ];
 
         var api = {
-            "createWidget": createWidget,
+            "createHeaderWidget": createHeaderWidget,
             "findWidgetsByPageId": findWidgetsByPageId,
             "updateWidget": updateWidget,
             "deleteWidget": deleteWidget,
-            "findWidgetById": findWidgetById
+            "findWidgetById": findWidgetById,
+            "createImageWidget": createImageWidget,
+            "createYoutubeWidget": createYoutubeWidget
+
 
         };
         return api;
 
 
-        function createWidget(pageId, widget) {
-            widgets.pageId = pageId;
-            widgets.push(widget);
+        function createHeaderWidget(pageId) {
+          var widget = new Object();
+          widget._id = getRandomInt(100,999).toString();
+          widget.widgetType ="HEADER";
+          widget.pageId = pageId;
+          widgets.push(widget);
+            return widget._id;
 
         }
+        function createImageWidget(pageId) {
+            var widget = new Object();
+            widget._id = getRandomInt(100,999).toString();
+            widget.widgetType ="IMAGE";
+            widget.pageId = pageId;
+            widgets.push(widget);
+            return widget._id;
+
+        }
+
+
+        function getRandomInt(min, max) {
+            min = Math.ceil(min);
+            max = Math.floor(max);
+            return Math.floor(Math.random() * (max - min)) + min;
+        }
+
+        function createYoutubeWidget(pageId)
+        {
+            var widget = new Object();
+            widget._id = getRandomInt(100,999).toString();
+            widget.widgetType ="YOUTUBE";
+            widget.pageId = pageId;
+            widgets.push(widget);
+            return widget._id;
+        }
+
+
+
         function findWidgetById(widgetId) {
             for(var w in widgets) {
                 if(widgets[w]._id === widgetId) {
@@ -81,7 +117,7 @@
                     widgets[w] = widget;
                 }
             }
-            console.log(widgets);
+
         }
 
 
@@ -95,7 +131,6 @@
         }
 
         }
-    })
-    ();
+    })();
 
 
