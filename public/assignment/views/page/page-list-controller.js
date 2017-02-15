@@ -13,7 +13,6 @@
         vm.callEdit = callEdit
         vm.goBackToWebsiteList = goBackToWebsiteList;
         vm.gotoProfile = gotoProfile;
-       console.log(vm.userId);
 
 
        function newPage()

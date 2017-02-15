@@ -24,7 +24,6 @@
         init();
 
         function getEditorTemplateUrl(type) {
-            console.log(type);
             return 'views/widget/widget-'+type+'-editor.view.client.html';
         }
 
