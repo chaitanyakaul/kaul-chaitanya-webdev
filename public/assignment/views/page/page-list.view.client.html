@@ -1,0 +1,84 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class = "navbar-header">
+            <div class="navbar-text pull-left">
+                <a ng-click="model.goBackToWebsiteList()">
+                <span class="glyphicon glyphicon-chevron-left">
+            </span>
+                </a>
+            </div>
+            <a class = "navbar-brand" >Pages</a>
+            <div class="navbar-text pull-right">
+                <a ng-click="model.newPage()">
+            <span class="glyphicon glyphicon-plus">
+            </span>
+                </a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+
+<div class="container-fluid">
+
+    <ul class="list-group">
+        <li class="list-group-item">
+            <div class="row">
+                <div class="col-xs-11 col-sm-6">
+                    Page Name
+                    <span class="glyphicon glyphicon-triangle-top"></span>
+                </div>
+                <div class="col-sm-3 hidden-xs">
+                    Website ID
+                </div>
+                <div class="col-sm-2 hidden-xs">
+                    Description
+                </div>
+                <div class="col-xs-1">
+                    <a class="pull-right" ng-click="model.newPage()">
+                        <span class="glyphicon glyphicon-plus"></span>
+                    </a>
+                </div>
+            </div>
+        </li>
+
+        <li ng-repeat="page in model.pages" class="list-group-item">
+            <div class="row">
+                <a ng-click="model.goToRespectiveWidget(page)" style="cursor:pointer;">
+                <div class="col-xs-11 col-sm-6">
+                    {{page.name}}
+                </div>
+                </a>
+                <div class="col-sm-3 hidden-xs">
+                    {{page.websiteId}}
+                </div>
+                <div class="col-sm-2 hidden-xs">
+                    {{page.description}}
+                </div>
+                <div class="col-xs-1">
+                    <a ng-click="model.callEdit(page._id)">
+                        <span class="glyphicon glyphicon-cog pull-right"></span>
+                    </a>
+                </div>
+            </div>
+        </li>
+    </ul>
+
+
+
+</div>
+
+
+
+
+
+
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container-fluid">
+        <div class="navbar-text pull-right">
+            <a ng-click="model.gotoProfile()" style="cursor: pointer" class="">
+                <span class="glyphicon glyphicon-user"></span>
+            </a>
+        </div>
+    </div>
+</nav>

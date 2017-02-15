@@ -1,0 +1,47 @@
+
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid ">
+
+        <div class = "navbar-header">
+            <div class="navbar-text pull-left">
+                <a ng-click="model.goToWidgetList()">
+                <span class="glyphicon glyphicon-chevron-left">
+            </span>
+                </a>
+            </div>
+            <a class = "navbar-brand" href = "#">Edit Widget</a>
+            <div class="navbar-text pull-right">
+                <a ng-click="model.widgetUpdate(model.widget)">
+            <span class="glyphicon glyphicon-ok">
+            </span>
+                </a>
+            </div>
+        </div>
+
+    </div>
+</nav>
+
+<div class="container cun">
+    Name:
+    <input type="text" placeholder="Name" ng-model="model.widget.widgetType"
+           class="form-control"/>
+    Text:
+    <input type="text" placeholder="Text" ng-model="model.widget.text"
+           class="form-control"/>
+    Size:
+    <input type="number" placeholder="Size" ng-model="model.widget.size"
+           class="form-control"/>
+</div>
+<div class="container">
+    <a class="btn btn-danger btn-block" ng-click="model.deleteWidget()">Delete</a>
+</div>
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container-fluid">
+        <div class="navbar-text pull-right">
+            <a ng-click="model.gotoProfile()" style="cursor: pointer;" class="">
+                <span class="glyphicon glyphicon-user"></span>
+            </a>
+        </div>
+    </div>
+</nav>
+

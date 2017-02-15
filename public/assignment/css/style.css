@@ -22,27 +22,31 @@ table td {
     border-top: none !important;
 }
 
-
+.glyphicon-cog{
+    cursor:pointer;
+}
 .abc{
     padding-top: 10px;
 }
 
 .glyphicon-plus{
     color: white;
+    cursor: hand;
 }
 .glyphicon-ok
 {
     color:white;
+    cursor: pointer;
 }
 .dow{
     padding-top:5px;
     padding-bottom: 10px;
 }
 .glyphicon-user{
-    color: white;
+    color: white;cursor: hand;
 }
 .glyphicon-chevron-left{
-    color: white;
+    color: white;cursor: hand;
 
 
 }
@@ -50,9 +54,7 @@ table td {
         width: 100%;
     }
 
-.navbar-brand{
-    widows:100%;
-}
+
 
 .center-me{
     text-align: center
@@ -80,3 +82,4 @@ li.borderless {
 .styler-three{
     text-align: center; width: 100%;
 }
+

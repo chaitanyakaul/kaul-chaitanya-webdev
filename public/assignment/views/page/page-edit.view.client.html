@@ -1,0 +1,102 @@
+
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="row container-fluid">
+        <div class="col-sm-4 hidden-xs">
+            <div class="navbar-text pull-left a-setting">
+                <a ng-click="model.goBackToPageList()">
+                    <span class="glyphicon glyphicon-chevron-left"></span>
+                </a>
+            </div>
+
+            <a class="navbar-brand">
+                Pages
+            </a>
+
+
+        </div>
+        <div class="col-sm-8">
+            <div class="navbar-text pull-left c-setting hidden-lg hidden-md hidden-sm">
+                <a href="website-list.html">
+                    <span class="glyphicon glyphicon-chevron-left"></span>
+                </a>
+            </div>
+            <div class="navbar-text pull-right d-setting">
+                <a ng-click="model.updatePage(pagess)">
+                    <span class="glyphicon glyphicon-ok" ></span>
+                </a>
+            </div>
+
+            <a class="navbar-brand">
+                Edit Page
+            </a>
+
+        </div>
+    </div>
+</nav>
+
+<div class="row container-fluid">
+    <div class="col-sm-4 hidden-xs">
+        <ul class="list-group">
+            <li class="list-group-item">
+                <div class="row">
+                    <div class="col-xs-10">
+                        Page Name
+                        <span class="glyphicon glyphicon-triangle-top"></span>
+                    </div>
+                    <div class="col-xs-2">
+                        <a href="website-new.html" class="pull-right">
+                            <span class="glyphicon glyphicon-plus"></span>
+                        </a>
+                    </div>
+                </div>
+            </li>
+            <li ng-repeat="page in model.pages" class="list-group-item">
+                <div class="row">
+                    <div class="col-xs-10">
+                        {{page.name}}
+                    </div>
+                    <div class="col-xs-2">
+                        <a ng-click="model.goToEdit(page)">
+                            <span class="glyphicon glyphicon-cog pull-right"></span>
+                        </a>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+
+
+    <div class="col-xs-12 col-sm-8 pull-right">
+
+            <div class="form-group">
+                <label for="exampleInputEmail1">Page Name</label>
+                <input ng-model="model.pagess.name" type="text" class="form-control" id="exampleInputEmail1"  value="model.pages.name">
+            </div>
+            <div class="form-group">
+                <label for="comment">Description:</label>
+                <textarea class="form-control" ng-model="model.pagess.description" rows="5" id="comment" placeholder="Page Description"></textarea>
+
+                <a ng-click="model.updatePage(pagess)" class="btn btn-primary btn-block">
+                    Update
+                </a>
+                <a ng-click="model.deletePage(pagess)" class="btn btn-danger btn-block">Delete</a>
+            </div>
+
+
+        </form>
+
+    </div>
+
+</div>
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container-fluid">
+        <div class="navbar-text pull-right">
+            <a ng-click="model.gotoProfile()" style="cursor: pointer;" class="">
+                <span class="glyphicon glyphicon-user"></span>
+            </a>
+        </div>
+    </div>
+</nav>
+
+

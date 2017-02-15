@@ -14,11 +14,15 @@ body {
 
 .glyphicon-chevron-left{
     color: white;
+    cursor: pointer;
 }
 .glyphicon-plus{
-    color: white;}
+    color: white;
+    cursor: pointer;
+}
 .glyphicon-ok{
     color:white;
+    cursor: hand;
 }
 
 
@@ -32,6 +36,7 @@ li.borderless {
 
 .glyphicon-user{
     color:white;
+
 }
 
 .border{

@@ -1,0 +1,101 @@
+/**
+ * Created by chaitanyakaul on 06/02/17.
+ */
+/**
+ * Created by chaitanyakaul on 06/02/17.
+ */
+(function () {
+    angular
+        .module("WebAppMaker")
+        .factory("WidgetService", WidgetService);
+
+    function WidgetService() {
+
+    var widgets=
+        [
+            { "_id": "123", "widgetType": "HEADER", "pageId": "321", "size": 2, "text": "GIZMODO"},
+            { "_id": "234", "widgetType": "HEADER", "pageId": "321", "size": 4, "text": "Lorem ipsum"},
+            { "_id": "345", "widgetType": "IMAGE", "pageId": "321", "width": "100%",
+                "url": "http://lorempixel.com/400/200/"},
+            { "_id": "456", "widgetType": "HTML", "pageId": "321", "text": "<p>Lorem ipsum</p>"},
+            { "_id": "567", "widgetType": "HEADER", "pageId": "321", "size": 4, "text": "Lorem ipsum"},
+            { "_id": "678", "widgetType": "YOUTUBE", "pageId": "321", "width": "100%",
+                "url": "https://youtu.be/AM2Ivdi9c4E" },
+            { "_id": "789", "widgetType": "HTML", "pageId": "321", "text": "<p>Lorem ipsum</p>"},
+            { "_id": "6456", "widgetType": "HEADER", "pageId": "412", "size": 2, "text": "GIZMODO"},
+            { "_id": "456456", "widgetType": "HEADER", "pageId": "412", "size": 4, "text": "Lorem ipsum"},
+            { "_id": "7567", "widgetType": "IMAGE", "pageId": "412", "width": "100%",
+                "url": "http://lorempixel.com/400/200/"},
+            { "_id": "87686", "widgetType": "HTML", "pageId": "412", "text": "<p>Lorem ipsum</p>"},
+            { "_id": "45456", "widgetType": "HEADER", "pageId": "412", "size": 4, "text": "Lorem ipsum"},
+            { "_id": "567567", "widgetType": "YOUTUBE", "pageId": "412", "width": "100%",
+                "url": "https://youtu.be/AM2Ivdi9c4E" },
+            { "_id": "567567", "widgetType": "HTML", "pageId": "412", "text": "<p>Lorem ipsum</p>"}
+        ];
+
+        var api = {
+            "createWidget": createWidget,
+            "findWidgetsByPageId": findWidgetsByPageId,
+            "updateWidget": updateWidget,
+            "deleteWidget": deleteWidget,
+            "findWidgetById": findWidgetById
+
+        };
+        return api;
+
+
+        function createWidget(pageId, widget) {
+            widgets.pageId = pageId;
+            widgets.push(widget);
+
+        }
+        function findWidgetById(widgetId) {
+            for(var w in widgets) {
+                if(widgets[w]._id === widgetId) {
+                    console.log("one hit")
+                    return angular.copy(widgets[w]);
+                }
+            }
+            return null;
+        }
+
+        function findWidgetsByPageId(pageId)
+        {
+            var widgu = [];
+            for(var w in widgets) {
+                if(widgets[w].pageId === pageId) {
+                    widgu.push(widgets[w]);
+                }
+            }
+            return widgu;
+
+        }
+
+        function updateWidget(widgetId, widget)
+        {
+
+            for(var w in widgets)
+            {
+                if(widgets[w]._id==widgetId)
+                {
+                    widgets[w] = widget;
+                }
+            }
+            console.log(widgets);
+        }
+
+
+        function deleteWidget(widgetId) {
+            for(var w in widgets) {
+                if(widgets[w]._id === widgetId) {
+                    widgets.splice(w, 1);
+                }
+            }
+            console.log(widgets);
+        }
+
+        }
+    })
+    ();
+
+
