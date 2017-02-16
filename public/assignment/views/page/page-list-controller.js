@@ -5,9 +5,9 @@
 
     function PageListController($routeParams, $location, PageService) {
         var vm = this;
-       vm.websiteId = $routeParams.wid;
+        vm.websiteId = $routeParams.wid;
        vm.userId = $routeParams.uid;
-    vm.goToRespectiveWidget= goToRespectiveWidget;
+        vm.goToRespectiveWidget= goToRespectiveWidget;
        vm.pages = PageService.findPageByWebsiteId(vm.websiteId);
        vm.newPage = newPage;
         vm.callEdit = callEdit
