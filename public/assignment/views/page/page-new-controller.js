@@ -12,8 +12,17 @@
         vm.goToEdit = goToEdit;
         vm.gotoPageList = gotoPageList;
 
-        function init() {
-            vm.pages = PageService.findPageByWebsiteId(vm.websiteId);
+        function init()
+        {
+            //console.log("hit")
+            PageService.findPageByWebsiteId(vm.websiteId)
+                .then(function (pages)
+                    {
+                        vm.pages = pages.data;
+                        //  console.log(vm.pages);
+                    }
+
+                )
         }
         init();
 

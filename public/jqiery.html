@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script
+            src="https://code.jquery.com/jquery-3.1.1.min.js"
+            integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+            crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+</head>
+<body>
+
+<h1>Hello World</h1>
+<script>
+   // console.log(jQuery);
+    //used to print the jQuery variables..initialization parameters
+
+
+   $(init);
+
+   function init(){
+       jQuery('h1').css('color', 'red');
+       jQuery('h1').html('Goodbye World');
+       var h2 =  jQuery('<h2> THis is a dynamicc header</h2>');
+       var body = jQuery('body');
+       body.append(h2);
+       var paragraph = $('<p> Lorem Ipsum Lorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem Ipsum</p>');
+       body.prepend(paragraph);
+       var movies = ['Terminator','Alients', 'Titanic'];
+       var list = $('<ul>');
+       for (var m in movies)
+       {
+          // var li =$('<li>'+ movies[m]+ '</li>');
+           var li = $('<li>');
+           li.append(movies[m]);
+           list.append(li);
+
+
+       }
+       body.append(list);
+       $('h1').draggable();
+        paragraph.draggable();
+        list.sortable();
+
+
+   }
+
+
+
+
+
+
+</script>
+
+
+</body>
+</html>

@@ -8,7 +8,23 @@
         vm.websiteId = $routeParams.wid;
        vm.userId = $routeParams.uid;
         vm.goToRespectiveWidget= goToRespectiveWidget;
-       vm.pages = PageService.findPageByWebsiteId(vm.websiteId);
+
+function init()
+{
+    //console.log("hit")
+    PageService.findPageByWebsiteId(vm.websiteId)
+        .then(function (pages)
+            {
+                vm.pages = pages.data;
+              //  console.log(vm.pages);
+            }
+
+        )
+}
+init();
+
+
+
        vm.newPage = newPage;
         vm.callEdit = callEdit
         vm.goBackToWebsiteList = goBackToWebsiteList;

@@ -12,11 +12,17 @@
         vm.createWebsite = createWebsite;
 
         function init() {
-            vm.websites = WebsiteService.findWebsitesByUser(vm.userId);
+            var promise = WebsiteService.findWebsitesByUser(vm.userId);
+            promise.then(function (websites) {
+                vm.websites = websites.data;
+
+            });
+
         }
         init();
 
         function createWebsite (website) {
+
             WebsiteService.createWebsite(vm.userId, website);
             $location.url("/user/"+vm.userId+"/website");
         };

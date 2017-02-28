@@ -1,7 +1,7 @@
 
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid ">
-        <div class="col"
+        <div class="col">
         <div class = "navbar-header">
             <div class="navbar-text pull-left">
                 <a ng-click="model.goToWidgetList()">
@@ -20,35 +20,42 @@
     </div>
     </div>
 </nav>
+<form action="/api/upload" method="post" enctype="multipart/form-data">
+    <div class="container">
 
-<div class="container">
-    Name:
-    <input type="text" placeholder="Your Name" ng-model="model.widget.widgetType"
-           class="form-control"/>
-    Text:
-    <input type="text" placeholder="Text" ng-model="model.widget.pageId"
-           class="form-control"/>
-    URL:
-    <input type="url" placeholder="URL" ng-model="model.widget.url"
-           class="form-control"/>
-    Width:
-    <input type="text" placeholder="Width" ng-model="model.widget.width"
-           class="form-control"/>
-    Upload:
-    <input type="file" class="form-control"/>
-</div>
+        Name:
+        <input type="text" placeholder="Your Name" ng-model="model.widget.widgetType"
+               class="form-control"/>
+        Text:
+        <input type="text" placeholder="Text" ng-model="model.widget.pageId"
+               class="form-control"/>
+        URL:
+        <input type="url" placeholder="URL" ng-model="model.widget.url"
+               class="form-control"/>
+        Width:
+        <input type="text" name="width" placeholder="Width" ng-model="model.widget.width"
+               class="form-control"/>
+        Upload File:
+        <input type="file" name="myFile" class="form-control"/>
+
+    </div>
 
 
-<div class="container dow">
-    <a class="btn btn-primary btn-block"
-       ng-click="model.widgetUpdate(model.widget)">Upload Image</a>
-</div>
+    <div class="container dow">
+        <input name="widgetId" value="{{model.widget._id}}" style="display: none"/>
+        <input name="userId" value="{{model.userId}}" style="display: none"/>
+        <input name="websiteId" value="{{model.websiteId}}" style="display: none"/>
+        <button class="btn btn-primary btn-block" type="submit">
+            Upload Image
+        </button>
+    </div>
+
 <div class="container">
     <a class="btn btn-danger btn-block"
        ng-click="model.deleteWidget()">Delete</a>
 </div>
 
-
+</form>
 
 
 <nav class="navbar navbar-default navbar-fixed-bottom">

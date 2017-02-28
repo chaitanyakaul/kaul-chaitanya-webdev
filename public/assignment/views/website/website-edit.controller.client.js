@@ -14,17 +14,32 @@
 
 
         function init() {
-            vm.websites = WebsiteService.findWebsitesByUser(vm.userId);
-            vm.website = WebsiteService.findWebsiteById(vm.websiteId);
+            var promise = WebsiteService.findWebsitesByUser(vm.userId);
+            var anotherPromise = WebsiteService.findWebsiteById(vm.websiteId);
+
+            anotherPromise.then(function(website)
+            {
+                vm.weber = website.data
+            })
+
+
+            promise.then(function (websites) {
+                vm.websites = websites.data;
+
+            });
 
         }
         init();
 
-      function updateWebsite(websiteName,websiteDescription)
+      function updateWebsite(website)
       {
-          var a = WebsiteService.updateWebsite(vm.websiteId,websiteName,websiteDescription);
+          console.log(website);
+          var a = WebsiteService.updateWebsite(vm.websiteId,website);
           $location.url("/user/"+vm.userId+"/website");
       }
+
+
+
 
         function deleteWebsite () {
             WebsiteService.deleteWebsite(vm.websiteId);
@@ -34,7 +49,8 @@
 
       function editThat(website)
       {
-
+          console.log("hit that")
+            console.log(website);
           $location.url("/user/"+vm.userId+"/website/"+website._id);
       }
     }

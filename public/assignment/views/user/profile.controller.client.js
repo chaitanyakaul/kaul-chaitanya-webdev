@@ -6,17 +6,35 @@
     function profileController($routeParams, UserService) {
         var vm = this;
         var userId = $routeParams['uid'];
+
+
+
+        function init() {
+            var promise = UserService.findUserById(userId);
+            promise.then(function (user) {
+                vm.user = user.data;
+                console.log(vm.user)
+                if (vm.user == null){
+                    $location.url("/login");
+                }
+                else{
+                    vm.firstName = angular.copy(vm.user.firstName);
+                }
+            });
+
+        }
+        init();
+
+
         vm.update = function (newUser) {
             var user = UserService.updateUser(userId, newUser);
+            //console.log("new user")
+            //console.log(newUser)
             if(user == null) {
                 vm.error = "unable to update user";
             } else {
                 vm.message = "user successfully updated"
             }
         };
-
-        var user = UserService.findUserById(userId);
-        vm.user = user;
-
     }
 })();

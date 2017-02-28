@@ -11,12 +11,19 @@
         vm.register = register;
 
         function register(user) {
-            var registerUser = UserService.createUser(user);
 
-            console.log(registerUser);
-            $location.url("/profile/"+registerUser);
-            if(registerUser != null) {
-              vm.error="You are registered";
-        }
+
+            var promise = UserService.createUser(user);
+            promise.then(function (user) {
+                vm.user = user.data;
+
+                if (vm.user != null){
+                    $location.url("/user/"+vm.user._id);
+                }
+                else{
+                    vm.firstName = angular.copy(vm.user.firstName);
+                }
+
+        })
     }
 }})();

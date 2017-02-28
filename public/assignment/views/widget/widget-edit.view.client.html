@@ -10,19 +10,16 @@
                 <span class="glyphicon glyphicon-plus"></span>
             </a>
         </div>
-        <a class="navbar-brand" href="#">Widget Editor</a>
+        <a class="navbar-brand" href="">Widget Editor</a>
     </div>
 </nav>
 
-<div class="container-fluid"
 
-     ng-include="model.getEditorTemplateUrl(model.widget.widgetType)">
-</div>
-
+<ng-include src="model.getEditorTemplateUrl(model.widget.widgetType)"></ng-include>
 <nav class="navbar navbar-default navbar-fixed-bottom">
     <div class="container-fluid">
         <div class="navbar-text pull-right">
-            <a ng-click="model.gotoProfile()" style="cursor: pointer;" class="">
+            <a href ng-click="model.gotoProfile()" class="">
                 <span class="glyphicon glyphicon-user"></span>
             </a>
         </div>

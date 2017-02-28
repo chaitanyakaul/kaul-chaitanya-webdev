@@ -63,19 +63,20 @@
         <form>
             <div class="form-group">
                 <label for="exampleInputEmail1">Website Name</label>
-                <input type="text" ng-model="model.website.name" class="form-control" id="exampleInputEmail1" placeholder="Website Name" id="website-name">
+                <input type="text" ng-model ="model.weber.name"  class="form-control" id="exampleInputEmail1" placeholder="Website Name" id="website-name">
             </div>
             <div class="form-group">
                 <label for="comment">Description:</label>
-                <textarea class="form-control" ng-model="model.website.description" rows="5" id="comment" placeholder="Description" id="website-description"></textarea>
+                <textarea class="form-control" ng-model="model.weber.description" rows="5" id="comment" placeholder="Description" id="website-description"></textarea>
 
             </div>
 
-            <a ng-click="model.updateWebsite(model.website.name,model.website.description)" class="btn btn-primary btn-block">
+            <a ng-click="model.updateWebsite(model.weber)" class="btn btn-primary btn-block">
                 Update
             </a>
                 <a ng-click="model.deleteWebsite()" class="btn btn-danger btn-block">Delete</a>
         </form>
+
     </div>
 
 </div>

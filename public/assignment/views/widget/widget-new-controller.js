@@ -20,27 +20,55 @@
         vm.createHtmlWidget = createHtmlWidget;
 
         function createHeaderWidget() {
-            var abc = WidgetService.createHeaderWidget(vm.pageId)
-            $location.url("/user/"+vm.userId+"/website/"+vm.websiteId+"/page/"+vm.pageId+"/widget/"+abc);
+            //var abc = WidgetService.createHeaderWidget(vm.pageId)
+            WidgetService.createHeaderWidget(vm.pageId)
+                .then(function (widgets)
+                    {
+                        vm.widget_id = widgets.data
+                        $location.url("/user/"+vm.userId+"/website/"+vm.websiteId+"/page/"+vm.pageId+"/widget/"+vm.widget_id);
+                    }
+
+                )
 
         }
 
         function createImageWidget()
         {
-            var abc = WidgetService.createImageWidget(vm.pageId)
-            $location.url("/user/"+vm.userId+"/website/"+vm.websiteId+"/page/"+vm.pageId+"/widget/"+abc);
+            WidgetService.createImageWidget(vm.pageId)
+                .then(function (widgets)
+                    {
+
+                        vm.widgeter = widgets.data
+                        $location.url("/user/"+vm.userId+"/website/"+vm.websiteId+"/page/"+vm.pageId+"/widget/"+vm.widgeter);
+                    }
+
+                )
         }
 
         function createYoutubeWidget()
         {
-            var abc = WidgetService.createYoutubeWidget(vm.pageId)
-            $location.url("/user/"+vm.userId+"/website/"+vm.websiteId+"/page/"+vm.pageId+"/widget/"+abc);
+            WidgetService.createYoutubeWidget(vm.pageId)
+                .then(function (widgets)
+                    {
+
+                        vm.widgeter = widgets.data
+                        $location.url("/user/"+vm.userId+"/website/"+vm.websiteId+"/page/"+vm.pageId+"/widget/"+vm.widgeter);
+                    }
+
+                )
         }
 
         function createHtmlWidget()
         {
-            var abc = WidgetService.createHtmlWidget(vm.pageId);
-            $location.url("/user/"+vm.userId+"/website/"+vm.websiteId+"/page/"+vm.pageId+"/widget/"+abc);
+            WidgetService.createHtmlWidget(vm.pageId)
+                .then(function (widgets)
+                    {
+
+                        vm.widgeter = widgets.data
+                        $location.url("/user/"+vm.userId+"/website/"+vm.websiteId+"/page/"+vm.pageId+"/widget/"+vm.widgeter);
+                    }
+
+                )
         }
 
         function getEditorTemplateUrl(type) {
