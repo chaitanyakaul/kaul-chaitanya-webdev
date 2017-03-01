@@ -3,6 +3,8 @@ module.exports = function (app) {
     app.get("/api/user/:userId", findUserById);
     app.put("/api/user/:userId", updateUser);
     app.post("/api/user", createUser);
+    app.get("/api/user?username=username&password=password", findUserByCredentials);
+
 
     var users = [
         {_id: "123", username: "alice",    password: "alice",    firstName: "Alice",  lastName: "Wonder"  },
@@ -75,13 +77,20 @@ module.exports = function (app) {
     }
 
     function findUserByCredentials(req, res){
-        var username = req.query.username;
-        var password = req.query.password;
-        console.log("find user by credentials HTTP service");
-        var user = users.find(function(user){
-            return user.password == password && user.username == username;
+        var username = req.query["username"];
+        var password = req.query["password"];
+        var user = null;
+       user = users.find(function(u){
+            return u.username == username && u.password == password;
         });
-        console.log(user);
+       if(user!=null)
+       {
         res.json(user);
+    }
+    else
+       {
+           res.json(null);
+
+       }
     }
 }

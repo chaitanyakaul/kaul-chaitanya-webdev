@@ -20,7 +20,8 @@
             "findWidgetById": findWidgetById,
             "createImageWidget": createImageWidget,
             "createYoutubeWidget": createYoutubeWidget,
-            "createHtmlWidget": createHtmlWidget
+            "createHtmlWidget": createHtmlWidget,
+            "updateTheWidgetOrder": updateTheWidgetOrder
 
 
         };
@@ -129,7 +130,9 @@
             return $http.delete("/api/widget/"+widgetId);
 
         }
-
+        function updateTheWidgetOrder(pageId, startIndex, endIndex) {
+            return $http.put("/page/"+pageId+"/widget?initial="+startIndex+"&final="+endIndex);
+        }
         }
     })();
 

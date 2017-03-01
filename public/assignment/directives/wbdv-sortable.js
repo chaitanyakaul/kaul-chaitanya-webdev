@@ -8,7 +8,7 @@
 
 
         function sortableDir() {
-        function linkfunc(scope, element, attributes) {
+        function linkfunc(scope, element, attributes, sorter) {
             element.sortable({
                 axis: 'y',
                 cursor: "move",

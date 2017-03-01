@@ -6,11 +6,11 @@
  */
 module.exports = function (app) {
 
-    var multer = require('multer'); // npm install multer --save
+    var multer = require('multer');
 
     var storage = multer.diskStorage({
         destination: function (req, file, cb) {
-            console.log("hello");
+
             cb(null, __dirname+"/../../public/uploads")
         },
         filename: function (req, file, cb) {
@@ -22,11 +22,12 @@ module.exports = function (app) {
     });
 
     var upload = multer({storage: storage});
-    console.log(upload.single('myFile'));
+
     app.post("/api/upload", upload.single('myFile'), uploadImage);
 
     app.post("/api/page/:pageId/widget_header", createHeaderWidget);
     //app.post("/api/page/:pageId/widget_image", createImageWidget);
+    app.put("/page/:pid/widget", updateTheWidgetOrder);
     app.get("/api/page/:pageId/widget",findWidgetsByPageId);
     app.get("/api/widget/:widgetId", findWidgetById);
     app.put("/api/widget/:widgetId", updateWidget);
@@ -57,6 +58,9 @@ module.exports = function (app) {
                 "url": "https://youtu.be/AM2Ivdi9c4E" },
             { "_id": "567567", "widgetType": "HTML", "pageId": "412", "text": "<p>Lorem ipsum</p>"}
         ];
+
+
+
 
     function createHeaderWidget(req, res) {
         var pageId = req.params.pageId;
@@ -179,8 +183,7 @@ module.exports = function (app) {
     }
 
     function uploadImage(req, res) {
-        console.log("hit in uploadImage");
-        console.log(req.body);
+
         var pageId        = null;
         var widgetId      = req.body.widgetId;
         var width         = req.body.width;
