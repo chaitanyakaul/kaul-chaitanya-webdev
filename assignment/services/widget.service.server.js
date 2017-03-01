@@ -205,7 +205,8 @@ module.exports = function (app) {
 
             }
         }
-        res.redirect("/assignment/#!/user/" + userId + "/website/" + websiteId + "/page/" + pageId + "/widget/" + widgetId);
+
+        res.redirect("/assignment/#!/user/" + userId + "/website/" + websiteId + "/page/" + pageId + "/widget");
 
     }
 

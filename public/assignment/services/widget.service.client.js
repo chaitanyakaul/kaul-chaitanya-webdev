@@ -128,9 +128,7 @@
 
         }
 
-        function updateTheWidgetOrder(pageId, startIndex, endIndex) {
-            return $http.put("/page/" + pageId + "/widget?initial=" + startIndex + "&final=" + endIndex);
-        }
+
     }
 })();
 
