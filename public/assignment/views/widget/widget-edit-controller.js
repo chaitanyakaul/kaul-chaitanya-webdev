@@ -22,8 +22,6 @@
             WidgetService
                 .findWidgetById(vm.widgetId)
                 .then(function (widget) {
-                    console.log("sdfsdfsdf");
-                    console.log(widget);
                     vm.widget = angular.copy(widget.data);
 
                 });
@@ -53,8 +51,7 @@
 
             WidgetService.deleteWidget(vm.widgetId)
                 .then(function (widgets) {
-                        console.log("hit in delete");
-                        //vm.widgeter = widgets.data
+
                         $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page/" + vm.pageId + "/widget/");
                     }
                 )
@@ -66,16 +63,15 @@
             $location.url("/profile/" + vm.userId);
         }
 
+
         function goToWidgetList() {
-            deleteWidget();
             $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page/" + vm.pageId + "/widget");
         }
 
-        var count = 0;
+
 
         function getEditorTemplateUrl(type) {
-            count++;
-            console.log(count);
+
             return 'views/widget/widget-' + type + '-editor.view.client.html';
         }
     }

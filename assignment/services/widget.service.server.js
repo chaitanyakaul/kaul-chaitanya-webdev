@@ -25,8 +25,6 @@ module.exports = function (app) {
 
     app.post("/api/upload", upload.single('myFile'), uploadImage);
     app.post("/api/page/:pageId/widget_header", createHeaderWidget);
-    //app.post("/api/page/:pageId/widget_image", createImageWidget);
-    //app.put("/page/:pid/widget", updateTheWidgetOrder);
     app.get("/api/page/:pageId/widget", findWidgetsByPageId);
     app.get("/api/widget/:widgetId", findWidgetById);
     app.put("/api/widget/:widgetId", updateWidget);
@@ -188,8 +186,8 @@ module.exports = function (app) {
         var userId = req.body.userId;
         var websiteId = req.body.websiteId;
         var myFile = req.file;
-        var destination = myFile.destination; // folder where file is saved to
-        var path = myFile.path; // full path of uploaded file
+        var destination = myFile.destination;
+        var path = myFile.path;
         var size = myFile.size;
         var mimetype = myFile.mimetype;
 
