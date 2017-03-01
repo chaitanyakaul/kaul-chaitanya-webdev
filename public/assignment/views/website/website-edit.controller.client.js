@@ -15,12 +15,6 @@
 
         function init() {
             var promise = WebsiteService.findWebsitesByUser(vm.userId);
-            var anotherPromise = WebsiteService.findWebsiteById(vm.websiteId);
-
-            anotherPromise.then(function (website) {
-                vm.weber = website.data
-            })
-
 
             promise.then(function (websites) {
                 vm.websites = websites.data;
@@ -29,10 +23,24 @@
 
         }
 
+
+        function another_init()
+        {
+            var anotherPromise = WebsiteService.findWebsiteById(vm.websiteId);
+            anotherPromise.then(function (website) {
+
+                vm.weber = website.data
+                console.log(vm.weber);
+
+            })
+
+        }
+        another_init();
+
         init();
 
         function updateWebsite(website) {
-            console.log(website);
+
             var a = WebsiteService.updateWebsite(vm.websiteId, website);
             $location.url("/user/" + vm.userId + "/website");
         }

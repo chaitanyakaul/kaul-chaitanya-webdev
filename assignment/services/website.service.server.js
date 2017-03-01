@@ -54,6 +54,7 @@ module.exports = function (app) {
             if (websites[w]._id == websiteId) {
                 websites[w].name = updater.name;
                 websites[w].description = updater.description;
+                res.sendStatus(200);
             }
         }
 

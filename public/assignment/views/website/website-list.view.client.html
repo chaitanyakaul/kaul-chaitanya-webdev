@@ -55,7 +55,7 @@
                     {{website.developerId}}
                 </div>
                 <div class="col">
-                    <a href="#!/user/{{model.userId}}/website/{{website._id}}">
+                    <a ng-click="model.callWebsiteEdit(website)">
                         <span class="glyphicon glyphicon-cog"></span>
                     </a>
                 </div>

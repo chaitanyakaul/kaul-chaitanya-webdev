@@ -24,6 +24,12 @@
         function goToRespectivePage(website) {
             $location.url("/user/" + vm.userId + "/website/" + website._id + "/page");
         }
+        vm.callWebsiteEdit = callWebsiteEdit;
+        function callWebsiteEdit(website)
+        {
+            $location.url("/user/" + vm.userId + "/website/" + website._id);
+        }
+
 
     }
 

@@ -21,6 +21,8 @@ module.exports = function (app) {
             if (users[u]._id == userId) {
                 users[u].firstName = newUser.firstName;
                 users[u].lastName = newUser.lastName;
+                users[u].email = newUser.email;
+                users[u].password = newUser.password;
                 res.json(users[u]);
                 return;
             }
