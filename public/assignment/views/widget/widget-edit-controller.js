@@ -65,6 +65,7 @@
 
 
         function goToWidgetList() {
+
             $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page/" + vm.pageId + "/widget");
         }
 

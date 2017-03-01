@@ -71,6 +71,7 @@ module.exports = function (app) {
         widget._id = getRandomInt(100, 999).toString();
         widget.widgetType = "HEADER";
         widget.pageId = pageId;
+        widget.tag = "new"
         widgets.push(widget);
         //return widget._id;
         res.send(widget._id);
@@ -85,6 +86,7 @@ module.exports = function (app) {
         widget._id = getRandomInt(100, 999).toString();
         widget.widgetType = "HTML";
         widget.pageId = pageId;
+        widget.tag = "new"
         widgets.push(widget);
         res.send(widget._id);
 
@@ -98,6 +100,7 @@ module.exports = function (app) {
         widget._id = getRandomInt(100, 999).toString();
         widget.widgetType = "IMAGE";
         widget.pageId = pageId;
+        widget.tag = "new"
         widgets.push(widget);
         res.send(widget._id);
 
@@ -116,6 +119,7 @@ module.exports = function (app) {
         widget._id = getRandomInt(100, 999).toString();
         widget.widgetType = "YOUTUBE";
         widget.pageId = pageId;
+        widget.tag = "new"
         widgets.push(widget);
         res.send(widget._id);
 
