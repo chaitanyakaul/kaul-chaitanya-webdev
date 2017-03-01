@@ -1,7 +1,7 @@
 /**
  * Created by chaitanyakaul on 07/02/17.
  */
-(function(){
+(function () {
     angular
         .module("WebAppMaker")
         .controller("PageEditController", PageEditController);
@@ -18,56 +18,49 @@
         vm.deletePage = deletePage;
         vm.gotoProfile = gotoProfile;
 
-        function init()
-        {
+        function init() {
 
             PageService.findPageByWebsiteId(vm.websiteId)
-                .then(function (pages)
-                    {
+                .then(function (pages) {
                         vm.pages = pages.data;
 
                     }
-
                 )
 
             PageService.findPageById(vm.pageId)
-                .then(function (pages)
-            {
-                vm.pagess = pages.data;
+                .then(function (pages) {
+                    vm.pagess = pages.data;
 
-            })
+                })
 
 
         }
+
         init();
 
 
-
-        function deletePage(pages){
+        function deletePage(pages) {
             var a = PageService.deletePage(vm.pageId);
-            $location.url("/user/"+vm.userId+"/website/"+vm.websiteId+"/page");
+            $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page");
         };
 
-        function updatePage (pages) {
-            var a = PageService.updatePage(vm.pageId,vm.pagess);
-            $location.url("/user/"+vm.userId+"/website/"+vm.websiteId+"/page");
+        function updatePage(pages) {
+            var a = PageService.updatePage(vm.pageId, vm.pagess);
+            $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page");
 
 
         };
 
-        function gotoProfile()
-        {
-            $location.url("/profile/"+vm.userId);
+        function gotoProfile() {
+            $location.url("/profile/" + vm.userId);
         }
 
-        function goBackToPageList()
-        {
-            $location.url("/user/"+vm.userId+"/website/"+vm.websiteId+"/page");
+        function goBackToPageList() {
+            $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page");
         }
 
-        function goToEdit(page)
-        {
-            $location.url("/user/"+vm.userId+"/website/"+vm.websiteId+"/page/"+page._id);
+        function goToEdit(page) {
+            $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page/" + page._id);
         }
 
 

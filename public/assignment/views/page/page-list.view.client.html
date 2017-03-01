@@ -1,22 +1,22 @@
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
         <div class="col">
-        <div class = "navbar-header">
-            <div class="navbar-text pull-left">
-                <a ng-click="model.goBackToWebsiteList()">
+            <div class="navbar-header">
+                <div class="navbar-text pull-left">
+                    <a ng-click="model.goBackToWebsiteList()">
                 <span class="glyphicon glyphicon-chevron-left">
             </span>
-                </a>
-            </div>
-            <a class = "navbar-brand" >Pages</a>
-            <div class="navbar-text pull-right">
-                <a ng-click="model.newPage()">
+                    </a>
+                </div>
+                <a class="navbar-brand">Pages</a>
+                <div class="navbar-text pull-right">
+                    <a ng-click="model.newPage()">
             <span class="glyphicon glyphicon-plus">
             </span>
-                </a>
+                    </a>
+                </div>
             </div>
         </div>
-    </div>
     </div>
 </nav>
 
@@ -45,9 +45,9 @@
         <li ng-repeat="page in model.pages" class="list-group-item">
             <div class="row">
                 <a ng-click="model.goToRespectiveWidget(page)" style="cursor:pointer;">
-                <div class="col-xs-11 col-sm-6">
-                    {{page.name}}
-                </div>
+                    <div class="col-xs-11 col-sm-6">
+                        {{page.name}}
+                    </div>
                 </a>
                 <div class="col-sm-3 hidden-xs">
                     {{page.websiteId}}
@@ -65,12 +65,7 @@
     </ul>
 
 
-
 </div>
-
-
-
-
 
 
 <nav class="navbar navbar-default navbar-fixed-bottom">

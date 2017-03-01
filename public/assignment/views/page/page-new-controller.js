@@ -1,4 +1,4 @@
-(function(){
+(function () {
     angular
         .module("WebAppMaker")
         .controller("PageNewController", PageNewController);
@@ -12,39 +12,34 @@
         vm.goToEdit = goToEdit;
         vm.gotoPageList = gotoPageList;
 
-        function init()
-        {
+        function init() {
             //console.log("hit")
             PageService.findPageByWebsiteId(vm.websiteId)
-                .then(function (pages)
-                    {
+                .then(function (pages) {
                         vm.pages = pages.data;
                         //  console.log(vm.pages);
                     }
-
                 )
         }
+
         init();
 
-        function createPage (page) {
+        function createPage(page) {
 
             PageService.createPage(vm.websiteId, page);
-            $location.url("/user/"+vm.userId+"/website/"+vm.websiteId+"/page");
+            $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page");
 
         };
-        function gotoProfile()
-        {
-            $location.url("/profile/"+vm.userId);
+        function gotoProfile() {
+            $location.url("/profile/" + vm.userId);
         }
 
-        function goToEdit(page)
-        {
-            $location.url("/user/"+vm.userId+"/website/"+vm.websiteId+"/page/"+page._id);
+        function goToEdit(page) {
+            $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page/" + page._id);
         }
 
-        function gotoPageList()
-        {
-            $location.url("/user/"+vm.userId+"/website/"+vm.websiteId+"/page/");
+        function gotoPageList() {
+            $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page/");
         }
 
     }

@@ -7,18 +7,18 @@ module.exports = function (app) {
 
 
     var users = [
-        {_id: "123", username: "alice",    password: "alice",    firstName: "Alice",  lastName: "Wonder"  },
-        {_id: "234", username: "bob",      password: "bob",      firstName: "Bob",    lastName: "Marley"  },
-        {_id: "345", username: "charly",   password: "charly",   firstName: "Charly", lastName: "Garcia"  },
-        {_id: "456", username: "jannunzi", password: "jannunzi", firstName: "Jose",   lastName: "Annunzi" }
+        {_id: "123", username: "alice", password: "alice", firstName: "Alice", lastName: "Wonder"},
+        {_id: "234", username: "bob", password: "bob", firstName: "Bob", lastName: "Marley"},
+        {_id: "345", username: "charly", password: "charly", firstName: "Charly", lastName: "Garcia"},
+        {_id: "456", username: "jannunzi", password: "jannunzi", firstName: "Jose", lastName: "Annunzi"}
     ];
 
     function updateUser(req, res) {
         var userId = req.params.userId;
         var newUser = req.body;
         console.log(newUser);
-        for(var u in users) {
-            if( users[u]._id == userId ) {
+        for (var u in users) {
+            if (users[u]._id == userId) {
                 users[u].firstName = newUser.firstName;
                 users[u].lastName = newUser.lastName;
                 res.json(users[u]);
@@ -27,10 +27,10 @@ module.exports = function (app) {
         }
     }
 
-    function createUser(req, res){
+    function createUser(req, res) {
         var user = req.body;
         console.log(user);
-        user._id=getRandomInt(100,999).toString();
+        user._id = getRandomInt(100, 999).toString();
 
         users.push(user);
         res.json(user);
@@ -39,11 +39,10 @@ module.exports = function (app) {
 
 
     function getRandomInt(min, max) {
-     min = Math.ceil(min);
-     max = Math.floor(max);
-     return Math.floor(Math.random() * (max - min)) + min;
-     }
-
+        min = Math.ceil(min);
+        max = Math.floor(max);
+        return Math.floor(Math.random() * (max - min)) + min;
+    }
 
 
     function findUserById(req, res) {
@@ -57,9 +56,9 @@ module.exports = function (app) {
     function findUser(req, res) {
         var username = req.query.username;
         var password = req.query.password;
-        if(username && password) {
+        if (username && password) {
             findUserByCredentials(req, res);
-        } else if(username) {
+        } else if (username) {
             findUserByUsername(req, res);
         }
     }
@@ -69,28 +68,26 @@ module.exports = function (app) {
             return u.username == req.query.username;
         });
         console.log(user);
-        if(user) {
+        if (user) {
             res.json(user);
         } else {
             res.sendStatus(404);
         }
     }
 
-    function findUserByCredentials(req, res){
+    function findUserByCredentials(req, res) {
         var username = req.query["username"];
         var password = req.query["password"];
         var user = null;
-       user = users.find(function(u){
+        user = users.find(function (u) {
             return u.username == username && u.password == password;
         });
-       if(user!=null)
-       {
-        res.json(user);
-    }
-    else
-       {
-           res.json(null);
+        if (user != null) {
+            res.json(user);
+        }
+        else {
+            res.json(null);
 
-       }
+        }
     }
 }

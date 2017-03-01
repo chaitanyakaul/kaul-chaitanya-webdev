@@ -1,4 +1,4 @@
-(function(){
+(function () {
     angular
         .module("WebAppMaker")
         .controller("WebsiteEditController", WebsiteEditController);
@@ -9,16 +9,15 @@
         vm.websiteId = $routeParams.wid;
 
         vm.deleteWebsite = deleteWebsite;
-       vm.updateWebsite = updateWebsite;
-       vm.editThat = editThat;
+        vm.updateWebsite = updateWebsite;
+        vm.editThat = editThat;
 
 
         function init() {
             var promise = WebsiteService.findWebsitesByUser(vm.userId);
             var anotherPromise = WebsiteService.findWebsiteById(vm.websiteId);
 
-            anotherPromise.then(function(website)
-            {
+            anotherPromise.then(function (website) {
                 vm.weber = website.data
             })
 
@@ -29,29 +28,26 @@
             });
 
         }
+
         init();
 
-      function updateWebsite(website)
-      {
-          console.log(website);
-          var a = WebsiteService.updateWebsite(vm.websiteId,website);
-          $location.url("/user/"+vm.userId+"/website");
-      }
+        function updateWebsite(website) {
+            console.log(website);
+            var a = WebsiteService.updateWebsite(vm.websiteId, website);
+            $location.url("/user/" + vm.userId + "/website");
+        }
 
 
-
-
-        function deleteWebsite () {
+        function deleteWebsite() {
             WebsiteService.deleteWebsite(vm.websiteId);
-            $location.url("/user/"+vm.userId+"/website");
+            $location.url("/user/" + vm.userId + "/website");
         };
 
 
-      function editThat(website)
-      {
-          console.log("hit that")
+        function editThat(website) {
+            console.log("hit that")
             console.log(website);
-          $location.url("/user/"+vm.userId+"/website/"+website._id);
-      }
+            $location.url("/user/" + vm.userId + "/website/" + website._id);
+        }
     }
 })();

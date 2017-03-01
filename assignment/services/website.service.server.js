@@ -3,7 +3,7 @@
  */
 module.exports = function (app) {
     app.post("/api/user/:userId/website", createWebsite);
-    app.get("/api/user/:userId/website",findWebsitesByUser);
+    app.get("/api/user/:userId/website", findWebsitesByUser);
     app.get("/api/website/:websiteId", findWebsiteById);
     app.put("/api/website/:websiteId", updateWebsite);
     app.delete("/api/website/:websiteId", deleteWebsite);
@@ -19,11 +19,11 @@ module.exports = function (app) {
 
     function findWebsiteById(req, res) {
         /*for (var w in websites) {
-            if (websites[w]._id === wid) {
-                return angular.copy(websites[w]);
-            }
-        }
-        return null;*/
+         if (websites[w]._id === wid) {
+         return angular.copy(websites[w]);
+         }
+         }
+         return null;*/
 
         var websiteId = req.params.websiteId;
         var website = websites.find(function (websiteObject) {
@@ -52,7 +52,7 @@ module.exports = function (app) {
         console.log(updater);
         for (var w in websites) {
             if (websites[w]._id == websiteId) {
-                websites[w].name =updater.name;
+                websites[w].name = updater.name;
                 websites[w].description = updater.description;
             }
         }
@@ -65,8 +65,8 @@ module.exports = function (app) {
         var userId = req.params.userId;
         var website = req.body;
         var new_website = {
-            _id : (new Date()).getTime().toString(),
-            developerId : userId,
+            _id: (new Date()).getTime().toString(),
+            developerId: userId,
             name: website.name,
             created: new Date(),
             description: website.description
@@ -78,7 +78,7 @@ module.exports = function (app) {
 
     function findWebsitesByUser(req, res) {
 
-    var user_id = req.params.userId;
+        var user_id = req.params.userId;
         var sites = [];
         for (var w in websites) {
             if (websites[w].developerId === user_id) {

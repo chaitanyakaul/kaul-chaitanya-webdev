@@ -1,4 +1,4 @@
-(function(){
+(function () {
     angular
         .module("WebAppMaker")
         .controller("profileController", profileController);
@@ -8,21 +8,21 @@
         var userId = $routeParams['uid'];
 
 
-
         function init() {
             var promise = UserService.findUserById(userId);
             promise.then(function (user) {
                 vm.user = user.data;
                 console.log(vm.user)
-                if (vm.user == null){
+                if (vm.user == null) {
                     $location.url("/login");
                 }
-                else{
+                else {
                     vm.firstName = angular.copy(vm.user.firstName);
                 }
             });
 
         }
+
         init();
 
 
@@ -30,7 +30,7 @@
             var user = UserService.updateUser(userId, newUser);
             //console.log("new user")
             //console.log(newUser)
-            if(user == null) {
+            if (user == null) {
                 vm.error = "unable to update user";
             } else {
                 vm.message = "user successfully updated"

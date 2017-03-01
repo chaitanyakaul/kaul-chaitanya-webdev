@@ -1,4 +1,4 @@
-(function(){
+(function () {
     angular
         .module("WebAppMaker")
         .controller("loginController", loginController);
@@ -16,13 +16,13 @@
                     console.log("fsd");
                     console.log(user);
                     var loginUser = user.data;
-                    if(loginUser != null) {
+                    if (loginUser != null) {
                         $location.url('/profile/' + loginUser._id);
                     } else {
                         vm.error = 'user not found';
                     }
                 })
-                .catch(function(err) {
+                .catch(function (err) {
                     vm.error = 'user not found';
                 });
         }

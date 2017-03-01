@@ -1,4 +1,3 @@
-
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="row container-fluid">
         <div class="col-sm-4 hidden-xs">
@@ -21,60 +20,61 @@
                 </a>
             </div>
 
-                <a class="navbar-brand" >
-                    Edit Website
-                </a>
+            <a class="navbar-brand">
+                Edit Website
+            </a>
         </div>
     </div>
 </nav>
 
 <div class="row container-fluid">
-        <div class="col-sm-4 hidden-xs wbdv-left-pane border styler-four">
-            <ul class="list-group">
-                <li class="list-group-item">
-                    <div class="row">
-                        <div class="col-xs-10">
-                            Name
-                            <span class="glyphicon glyphicon-triangle-top"></span>
-                        </div>
-                        <div class="col-xs-2">
-                            <a href="website-new.html" class="pull-right">
-                                <span class="glyphicon glyphicon-plus"></span>
-                            </a>
-                        </div>
+    <div class="col-sm-4 hidden-xs wbdv-left-pane border styler-four">
+        <ul class="list-group">
+            <li class="list-group-item">
+                <div class="row">
+                    <div class="col-xs-10">
+                        Name
+                        <span class="glyphicon glyphicon-triangle-top"></span>
                     </div>
-                </li>
-                <li ng-repeat="website in model.websites" class="list-group-item">
-                    <div class="row">
-                        <div class="col-xs-10">
-                            {{website.name}}
-                        </div>
-                        <div class="col-xs-2">
-                            <a class="glyphicon glyphicon-cog pull-right" ng-click="model.editThat(website)"></a>
-                        </div>
+                    <div class="col-xs-2">
+                        <a href="website-new.html" class="pull-right">
+                            <span class="glyphicon glyphicon-plus"></span>
+                        </a>
                     </div>
-                </li>
-            </ul>
-        </div>
-
+                </div>
+            </li>
+            <li ng-repeat="website in model.websites" class="list-group-item">
+                <div class="row">
+                    <div class="col-xs-10">
+                        {{website.name}}
+                    </div>
+                    <div class="col-xs-2">
+                        <a class="glyphicon glyphicon-cog pull-right" ng-click="model.editThat(website)"></a>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
 
 
     <div class="col-xs-12 col-sm-8 pull-right">
         <form>
             <div class="form-group">
                 <label for="exampleInputEmail1">Website Name</label>
-                <input type="text" ng-model ="model.weber.name"  class="form-control" id="exampleInputEmail1" placeholder="Website Name" id="website-name">
+                <input type="text" ng-model="model.weber.name" class="form-control" id="exampleInputEmail1"
+                       placeholder="Website Name" id="website-name">
             </div>
             <div class="form-group">
                 <label for="comment">Description:</label>
-                <textarea class="form-control" ng-model="model.weber.description" rows="5" id="comment" placeholder="Description" id="website-description"></textarea>
+                <textarea class="form-control" ng-model="model.weber.description" rows="5" id="comment"
+                          placeholder="Description" id="website-description"></textarea>
 
             </div>
 
             <a ng-click="model.updateWebsite(model.weber)" class="btn btn-primary btn-block">
                 Update
             </a>
-                <a ng-click="model.deleteWebsite()" class="btn btn-danger btn-block">Delete</a>
+            <a ng-click="model.deleteWebsite()" class="btn btn-danger btn-block">Delete</a>
         </form>
 
     </div>

@@ -1,7 +1,7 @@
 /**
  * Created by chaitanyakaul on 07/02/17.
  */
-(function(){
+(function () {
     angular
         .module("WebAppMaker")
         .controller("WebsiteNewController", WebsiteNewController);
@@ -19,12 +19,13 @@
             });
 
         }
+
         init();
 
-        function createWebsite (website) {
+        function createWebsite(website) {
 
             WebsiteService.createWebsite(vm.userId, website);
-            $location.url("/user/"+vm.userId+"/website");
+            $location.url("/user/" + vm.userId + "/website");
         };
     }
 })();

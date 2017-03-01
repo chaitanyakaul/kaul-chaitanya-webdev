@@ -1,7 +1,7 @@
 /**
  * Created by chaitanyakaul on 07/02/17.
  */
-(function(){
+(function () {
     angular
         .module("WebAppMaker")
         .controller("registerController", registerController);
@@ -17,13 +17,14 @@
             promise.then(function (user) {
                 vm.user = user.data;
 
-                if (vm.user != null){
-                    $location.url("/user/"+vm.user._id);
+                if (vm.user != null) {
+                    $location.url("/user/" + vm.user._id);
                 }
-                else{
+                else {
                     vm.firstName = angular.copy(vm.user.firstName);
                 }
 
-        })
+            })
+        }
     }
-}})();
+})();

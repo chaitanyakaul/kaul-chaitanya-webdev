@@ -7,13 +7,14 @@
         .directive('wbdvSortable', sortableDir);
 
 
-        function sortableDir() {
+    function sortableDir() {
         function linkfunc(scope, element, attributes, sorter) {
             element.sortable({
                 axis: 'y',
                 cursor: "move",
             });
         }
+
         return {
             link: linkfunc
         }
