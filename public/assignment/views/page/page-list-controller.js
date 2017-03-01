@@ -37,7 +37,7 @@
         }
 
         function goToRespectiveWidget(page) {
-            $location.url("/user/" + vm.userIqxd + "/website/" + vm.websiteId + "/page/" + page._id + "/widget");
+            $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page/" + page._id + "/widget");
         }
 
         function goBackToWebsiteList() {

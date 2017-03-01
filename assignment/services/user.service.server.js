@@ -7,10 +7,10 @@ module.exports = function (app) {
 
 
     var users = [
-        {_id: "123", username: "alice", password: "alice", firstName: "Alice", lastName: "Wonder"},
-        {_id: "234", username: "bob", password: "bob", firstName: "Bob", lastName: "Marley"},
-        {_id: "345", username: "charly", password: "charly", firstName: "Charly", lastName: "Garcia"},
-        {_id: "456", username: "jannunzi", password: "jannunzi", firstName: "Jose", lastName: "Annunzi"}
+        {_id: "123", username: "alice", password: "alice", firstName: "Alice", lastName: "Wonder", email: "alice@wonder.com"},
+        {_id: "234", username: "bob", password: "bob", firstName: "Bob", lastName: "Marley", email: "bob@wonder.com"},
+        {_id: "345", username: "charly", password: "charly", firstName: "Charly", lastName: "Garcia", email: "charly@wonder.com"},
+        {_id: "456", username: "jannunzi", password: "jannunzi", firstName: "Jose", lastName: "Annunzi", email: "jose@wonder.com"}
     ];
 
     function updateUser(req, res) {
@@ -76,8 +76,8 @@ module.exports = function (app) {
     }
 
     function findUserByCredentials(req, res) {
-        var username = req.query["username"];
-        var password = req.query["password"];
+        var username = req.query['username'];
+        var password = req.query['password'];
         var user = null;
         user = users.find(function (u) {
             return u.username == username && u.password == password;

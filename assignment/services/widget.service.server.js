@@ -24,10 +24,9 @@ module.exports = function (app) {
     var upload = multer({storage: storage});
 
     app.post("/api/upload", upload.single('myFile'), uploadImage);
-
     app.post("/api/page/:pageId/widget_header", createHeaderWidget);
     //app.post("/api/page/:pageId/widget_image", createImageWidget);
-//    app.put("/page/:pid/widget", updateTheWidgetOrder);
+    //app.put("/page/:pid/widget", updateTheWidgetOrder);
     app.get("/api/page/:pageId/widget", findWidgetsByPageId);
     app.get("/api/widget/:widgetId", findWidgetById);
     app.put("/api/widget/:widgetId", updateWidget);
@@ -203,7 +202,6 @@ module.exports = function (app) {
 
             }
         }
-
         res.redirect("/assignment/#!/user/" + userId + "/website/" + websiteId + "/page/" + pageId + "/widget/" + widgetId);
 
     }
