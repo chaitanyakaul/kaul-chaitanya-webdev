@@ -17,7 +17,7 @@ module.exports = function (app) {
 
             var extArray = file.mimetype.split("/");
             var extension = extArray[extArray.length - 1];
-            cb(null, 'widget_image_' + Date.now() + '.' + extension)
+            cb(null, 'image_upload' + Date.now() + '.' + extension)
         }
     });
 
@@ -185,6 +185,7 @@ module.exports = function (app) {
     function uploadImage(req, res) {
 
         var pageId = null;
+        console.log(req.body);
         var widgetId = req.body.widgetId;
         var width = req.body.width;
         var userId = req.body.userId;
