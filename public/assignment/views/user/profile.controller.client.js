@@ -3,7 +3,7 @@
         .module("WebAppMaker")
         .controller("profileController", profileController);
 
-    function profileController($routeParams, UserService) {
+    function profileController($routeParams, UserService, $location) {
         var vm = this;
         var userId = $routeParams['uid'];
 
@@ -36,5 +36,13 @@
                 vm.message = "user successfully updated"
             }
         };
+
+        vm.delete = function()
+
+        {
+            var user = UserService.deleteUser(userId);
+            $location.url("/");
+        }
+
     }
 })();

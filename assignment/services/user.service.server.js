@@ -4,9 +4,23 @@ module.exports = function (app) {
     app.put("/api/user/:userId", updateUser);
     app.post("/api/user", createUser);
     app.get("/api/user?username=username&password=password", findUserByCredentials);
+    app.delete("/api/user/:userId", deleteUser);
 
 
     var users = [];
+
+    function deleteUser(req, res) {
+        var userId = req.params.userId;
+        for(var u in users) {
+            var user = users[u];
+            if( user._id === userId ) {
+                users.splice(u,1);
+                res.sendStatus(200);
+                return;
+            }
+        }
+        res.sendStatus(404);
+    }
 
     function updateUser(req, res) {
         var userId = req.params.userId;
