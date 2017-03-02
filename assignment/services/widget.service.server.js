@@ -32,6 +32,7 @@ module.exports = function (app) {
     app.post("/api/page/:pageId/widget_image", createImageWidget);
     app.post("/api/page/:pageId/widget_html", createHtmlWidget);
     app.post("/api/page/:pageId/widget_youtube", createYoutubeWidget);
+    app.put("/page/:pageId/widget", WidOrderUpdate)
 
 
     var widgets =
@@ -69,6 +70,7 @@ module.exports = function (app) {
     function createImageWidget(req, res) {
 
         var pageId = req.params.pageId;
+
         var widget = new Object();
         widget._id = getRandomInt(100, 999).toString();
         widget.widgetType = "IMAGE";
@@ -118,13 +120,14 @@ module.exports = function (app) {
 
     function findWidgetsByPageId(req, res) {
         var pageId = req.params.pageId;
-
         var widgu = [];
         for (var w in widgets) {
-            if (widgets[w].pageId === pageId) {
+            if (widgets[w].pageId == pageId) {
                 widgu.push(widgets[w]);
             }
         }
+        console.log("gdsfggsdfga")
+        console.log(widgu);
         res.json(widgu);
 
     }
@@ -152,6 +155,21 @@ module.exports = function (app) {
                 res.sendStatus(200);
             }
         }
+
+    }
+
+    function WidOrderUpdate(req, res)
+
+    {
+        var start = parseInt(req.query.initial);
+        var end = parseInt(req.query.final);
+        console.log(start);
+        console.log(end);
+        console.log(widgets)
+        widgets.splice(end, 0, widgets.splice(start, 1)[0]);
+        console.log("result")
+        console.log(widgets)
+
 
     }
 
