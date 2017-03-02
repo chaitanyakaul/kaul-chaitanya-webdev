@@ -20,7 +20,8 @@
             "findWidgetById": findWidgetById,
             "createImageWidget": createImageWidget,
             "createYoutubeWidget": createYoutubeWidget,
-            "createHtmlWidget": createHtmlWidget
+            "createHtmlWidget": createHtmlWidget,
+            "WidOrderUpdate": WidOrderUpdate
 
 
 
@@ -126,6 +127,12 @@
              }*/
             return $http.delete("/api/widget/" + widgetId);
 
+        }
+
+        function WidOrderUpdate(pageId, startingIndex, endingIndex)
+        {
+
+            return $http.put("/page/" + pageId + "/widget?initial=" + startingIndex + "&final=" + endingIndex)
         }
 
 
