@@ -128,7 +128,7 @@ module.exports = function () {
         //     })
 
         return WidgetModel
-            .find({_page: pageId}, function (err, widgets) {
+            .find({_page: pageId}, function (error, widgets) {
                 widgets.forEach(function (returnedResult) {
                     if (beg < ending) {
                         if (returnedResult.order == beg) {
