@@ -115,7 +115,7 @@ module.exports = function () {
     }
 
 
-    function reOrderWidget(pageId, start, end) {
+    function reOrderWidget(pageId, beg, ending) {
         // return model
         //     .pageModel
         //     .findPageById(pageId)
@@ -129,25 +129,25 @@ module.exports = function () {
 
         return WidgetModel
             .find({_page: pageId}, function (err, widgets) {
-                widgets.forEach(function (widget) {
-                    if (start < end) {
-                        if (widget.order == start) {
-                            widget.order = end;
-                            widget.save();
+                widgets.forEach(function (returnedResult) {
+                    if (beg < ending) {
+                        if (returnedResult.order == beg) {
+                            returnedResult.order = ending;
+                            returnedResult.save();
                         }
-                        else if (widget.order > start && widget.order <= end) {
-                            widget.order = widget.order - 1;
-                            widget.save();
+                        else if (returnedResult.order > beg && returnedResult.order <= ending) {
+                            returnedResult.order = returnedResult.order - 1;
+                            returnedResult.save();
                         }
                     } else {
-                        if (widget.order == start) {
-                            widget.order = end;
-                            widget.save();
+                        if (returnedResult.order == beg) {
+                            returnedResult.order = ending;
+                            returnedResult.save();
                         }
 
-                        else if (widget.order < start && widget.order >= end) {
-                            widget.order = widget.order + 1;
-                            widget.save();
+                        else if (returnedResult.order < beg && returnedResult.order >= ending) {
+                            returnedResult.order = returnedResult.order + 1;
+                            returnedResult.save();
                         }
                     }
                 });
