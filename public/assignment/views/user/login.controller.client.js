@@ -16,10 +16,12 @@
                 var promise = UserService.findUserByCredentials(user.username, user.password);
                 promise
                     .then(function (user) {
-                        console.log("fsd");
-                        console.log(user);
-                        var loginUser = user.data;
+                        //console.log("fsd");
+                        //console.log(user);
+                        var loginUser = user.data[0];
                         if (loginUser != null) {
+                            console.log("uper hit");
+                            console.log(loginUser._id);
                             $location.url('/profile/' + loginUser._id);
                         } else {
                             vm.error = 'user not found';

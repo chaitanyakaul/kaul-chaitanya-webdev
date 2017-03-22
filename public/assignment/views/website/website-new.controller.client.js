@@ -24,8 +24,11 @@
 
         function createWebsite(website) {
 
-            WebsiteService.createWebsite(vm.userId, website);
-            $location.url("/user/" + vm.userId + "/website");
+            var promise = WebsiteService.createWebsite(vm.userId, website);
+            promise.then(function(status){
+                $location.url("/user/" + vm.userId + "/website");
+            });
+
         };
     }
 })();

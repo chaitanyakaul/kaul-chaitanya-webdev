@@ -26,8 +26,11 @@
 
         function createPage(page) {
 
-            PageService.createPage(vm.websiteId, page);
-            $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page");
+            var promise =  PageService.createPage(vm.websiteId, page);
+            promise.then(function(status){
+                $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page");
+            })
+
 
         };
         function gotoProfile() {

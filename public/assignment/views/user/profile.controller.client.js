@@ -10,9 +10,12 @@
 
         function init() {
             var promise = UserService.findUserById(userId);
+            console.log(userId);
             promise.then(function (user) {
                 vm.user = user.data;
-                console.log(vm.user)
+                console.log("profile mein hit");
+
+                console.log(vm.user);
                 if (vm.user == null) {
                     $location.url("/login");
                 }
@@ -42,6 +45,12 @@
         {
             var user = UserService.deleteUser(userId);
             $location.url("/");
+        }
+
+
+        vm.logout = function()
+        {
+            $location.url("/")
         }
 
     }

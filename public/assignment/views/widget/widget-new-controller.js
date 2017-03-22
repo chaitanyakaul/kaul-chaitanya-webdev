@@ -18,6 +18,7 @@
         vm.goBackToList = goBackToList;
         vm.gotoProfile = gotoProfile;
         vm.createHtmlWidget = createHtmlWidget;
+        vm.createTextWidget = createTextWidget;
 
         function createHeaderWidget() {
             //var abc = WidgetService.createHeaderWidget(vm.pageId)
@@ -59,7 +60,15 @@
                     }
                 )
         }
+        function createTextWidget() {
+            WidgetService.createTextWidget(vm.pageId)
+                .then(function (widgets) {
 
+                        vm.widgeter = widgets.data
+                        $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page/" + vm.pageId + "/widget/" + vm.widgeter);
+                    }
+                )
+        }
         function getEditorTemplateUrl(type) {
             return 'views/widget/widget-' + type + '-editor.view.client.html';
         }

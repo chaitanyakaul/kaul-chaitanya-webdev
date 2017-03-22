@@ -21,7 +21,8 @@
             "createImageWidget": createImageWidget,
             "createYoutubeWidget": createYoutubeWidget,
             "createHtmlWidget": createHtmlWidget,
-            "WidOrderUpdate": WidOrderUpdate
+            "WidOrderUpdate": WidOrderUpdate,
+            "createTextWidget":createTextWidget
 
 
 
@@ -51,6 +52,18 @@
              widgets.push(widget);
              return widget._id;*/
             return $http.post("/api/page/" + pageId + "/widget_html");
+
+        }
+
+
+        function createTextWidget(pageId) {
+            /*      var widget = new Object();
+             widget._id = getRandomInt(100,999).toString();
+             widget.widgetType ="HTML";
+             widget.pageId = pageId;
+             widgets.push(widget);
+             return widget._id;*/
+            return $http.post("/api/page/" + pageId + "/widget_text");
 
         }
 

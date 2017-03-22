@@ -16,9 +16,12 @@
         vm.websiteId = $routeParams.wid;
         vm.pageId = $routeParams.pid;
         function init() {
-            WidgetService.findWidgetsByPageId(vm.pageId)
+             WidgetService.findWidgetsByPageId(vm.pageId)
                 .then(function (widgets) {
+
                         vm.widgets = widgets.data;
+                        console.log(widgets)
+                        console.log(vm.widgets);
                     }
                 )
         }
@@ -33,6 +36,7 @@
 
         function getWidgetTemplateUrl(widgetType) {
             console.log(widgetType);
+            console.log("hit")
             var url = 'views/widget/templates/widget-' + widgetType + '.view.client.html';
             return url;
         }

@@ -1,7 +1,7 @@
 /**
  * Created by chaitanyakaul on 26/02/17.
  */
-module.exports = function (app) {
+module.exports = function (app, pageModel) {
     app.post("/api/website/:websiteId/page", createPage);
     app.get("/api/website/:websiteId/page", findPageByWebsiteId);
     app.get("/api/page/:pageId", findPageById);
@@ -16,12 +16,24 @@ module.exports = function (app) {
         //console.log(websiteId);
 
         var page = {
-            _id: getRandomInt(100, 999).toString(),
             name: page_info.name,
             websiteId: websiteId,
             description: page_info.description
         };
-        pages.push(page);
+
+        pageModel
+            .createPage(websiteId, page)
+            .then(function (page)
+            {
+                res.json(page);
+                res.sendStatus(200);
+
+            }, function (error)
+            {
+                console.log(error)
+                res.sendStatus(404);
+            })
+   /*     pages.push(page);*/
 
     }
 
@@ -38,7 +50,7 @@ module.exports = function (app) {
         var websiteId = req.params.websiteId;
         //console.log(websiteId);
 
-        var pagesg = [];
+/*        var pagesg = [];
 
         for (var p in pages) {
 
@@ -48,7 +60,19 @@ module.exports = function (app) {
             }
         }
         // console.log(pagesg);
-        res.json(pagesg);
+        res.json(pagesg);*/
+pageModel
+    .findAllPagesForWebsite(websiteId)
+    .then(function (page){
+
+        res.json(page)
+    }, function (err)
+    {
+        console.log(err);
+        res.sendStatus(404)
+    })
+
+
 
 
     }
@@ -57,12 +81,16 @@ module.exports = function (app) {
         var pageId = req.params.pageId;
 
 
-        for (var p in pages) {
-            if (pages[p]._id === pageId) {
-                res.json(pages[p]);
-            }
-        }
-        return;
+        pageModel
+            .findPageById(pageId)
+            .then(function (page){
+                res.json(page)
+                res.sendStatus(200);
+            }, function (err)
+            {
+                res.sendStatus(404)
+            })
+
     }
 
 
@@ -71,26 +99,50 @@ module.exports = function (app) {
         var page = req.body;
 
 
-        for (var p in pages) {
+        pageModel
+            .updatePage(pageId, page)
+            .then(function (response)
+            {
+                console.log(response.state)
+                res.sendStatus(200)
+            }, function (error)
+            {
+                res.sendStatus(404)
+            })
+
+      /*  for (var p in pages) {
             if (pages[p]._id == pageId) {
                 pages[p].name = page.name;
                 pages[p].description = page.description;
                 res.sendStatus(200);
 
             }
-        }
+        }*/
 
     }
 
     function deletePage(req, res) {
         var pageId = req.params.pageId;
-        for (var p in pages) {
+      /*  for (var p in pages) {
             if (pages[p]._id === pageId) {
                 pages.splice(p, 1);
                 res.sendStatus(200);
 
             }
-        }
+        }*/
+
+      pageModel
+          .deletePage(pageId)
+          .then(function(response)
+          {
+              res.sendStatus(200)
+          }, function (error)
+          {
+              console.log(error)
+              res.sendStatus(404);
+
+
+          })
     }
 
 

@@ -1,5 +1,6 @@
 var express = require('express');
 var app = express();
+app.disable('etag');
 
 var bodyParser = require('body-parser');
 app.use(bodyParser.json());
