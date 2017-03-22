@@ -21,12 +21,8 @@
 </nav>
 <form action="/api/upload" method="post" enctype="multipart/form-data">
     <div class="container">
-
-        Name:
-        <input type="text" placeholder="Your Name" ng-model="model.widget.widgetType"
-               class="form-control"/>
-        Text:
-        <input type="text" placeholder="Text" ng-model="model.widget.pageId"
+        Widget ID:
+        <input type="text" placeholder="Widget ID" ng-model="model.widgetId"
                class="form-control"/>
         URL:
         <input type="url" placeholder="URL" ng-model="model.widget.url"
@@ -36,7 +32,6 @@
                class="form-control"/>
         Upload File:
         <input type="file" name="myFile" class="form-control"/>
-
     </div>
 
     <div class="container dow">
@@ -52,6 +47,8 @@
     <div class="container">
         <a class="btn btn-danger btn-block"
            ng-click="model.deleteWidget()">Delete</a>
+        <a class="btn btn-primary btn-block"
+           ng-click="model.gotoFlickr()">Flickr Search</a>
     </div>
 
 </form>

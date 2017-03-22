@@ -17,6 +17,7 @@
         vm.deleteWidget = deleteWidget;
         vm.gotoProfile = gotoProfile;
         vm.goToWidgetList = goToWidgetList;
+        vm.gotoFlickr = gotoFlickr;
 
         function init() {
             console.log("hit in init")
@@ -70,6 +71,13 @@
                 )
 
 
+        }
+
+        function gotoFlickr()
+
+        {
+            console.log("pahucha");
+            $location.url("/user/"+vm.userId+"/website/"+vm.websiteId+"/page/"+vm.pageId+"/widget/"+vm.widgetId+"/flickrsearch")
         }
 
         function gotoProfile() {
