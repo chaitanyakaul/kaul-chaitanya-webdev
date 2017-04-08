@@ -9,12 +9,8 @@ module.exports = function (app, userModel) {
     app.post('/api/logout', logout);
     app.post ('/api/register', register);
     app.get ('/api/loggedin', loggedin);
-    app.get('/auth/facebook',passport.authenticate('facebook',{ scope : 'email'}));
-    app.get('/auth/facebook/callback',
-        passport.authenticate('facebook', {
-            successRedirect: '/#/user',
-            failureRedirect: '/#/login'
-        }));
+
+    var bcrypt = require("bcrypt-nodejs");
 
     var facebookConfig = {
         clientID: process.env.FACEBOOK_CLIENT_ID,
@@ -26,7 +22,7 @@ module.exports = function (app, userModel) {
     var passport = require('passport');
     var FacebookStrategy = require('passport-facebook').Strategy;
     var LocalStrategy = require('passport-local').Strategy;
-
+    app.get('/auth/facebook',passport.authenticate('facebook',{ scope : 'email'}));
 
     passport.serializeUser(serializeUser);
     passport.deserializeUser(deserializeUser);
@@ -36,11 +32,17 @@ module.exports = function (app, userModel) {
     passport.use(new LocalStrategy(localStrategy));
     app.post  ('/api/login', passport.authenticate('wam'), login);
     app.get('/auth/facebook',passport.authenticate('facebook',{ scope : 'email'}));
-    app.get('/auth/facebook/callback',
-        passport.authenticate('facebook', {
-            successRedirect: '/#/user',
-            failureRedirect: '/#/login'
-        }));
+    app.get('/auth/facebook/callback',passport.authenticate('facebook', {
+        failureRedirect: '/assignment/#/login'
+    }), function(req, res){
+
+
+
+        var url = '/assignment/#!/user/' + req.user._id.toString()+'/website';
+        console.log(url)
+
+        res.redirect(url);
+    });
     var users = [];
 
 
@@ -76,7 +78,7 @@ module.exports = function (app, userModel) {
 
     function register (req, res) {
         var user = req.body;
-        user.password = user.password;
+        user.password = bcrypt.hashSync(user.password);
         userModel
             .createUser(user)
             .then(function(user){
@@ -148,7 +150,7 @@ module.exports = function (app, userModel) {
             .findUserByCredentials(username, password)
             .then(
                 function(user) {
-                    if(user.username === username && user.password === password) {
+                    if(user.username === username && bcrypt.compareSync(user.password === password)) {
                         return done(null, user);
                     } else {
                         return done(null, false);
