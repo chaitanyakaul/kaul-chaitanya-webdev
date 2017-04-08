@@ -12,8 +12,6 @@ module.exports = function () {
     var PageModel
 
 
-
-
     var api={
         "createPage": createPage,
         "findAllPagesForWebsite":findAllPagesForWebsite,

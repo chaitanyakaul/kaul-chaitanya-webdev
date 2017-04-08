@@ -7,6 +7,19 @@
         .config(configuration);
 
 
+
+    var checkLoggedIn = function($q, $timeout, $http, $location, $rootScope) {
+        console.log("checking if logged in")
+        return $http.get('/api/loggedin').success(function(user) {
+            $rootScope.errorMessage = null;
+            if (user !== '0') {
+                $rootScope.currentUser = user;
+            } else{
+                $location.url('/login');
+            }
+        });
+    }
+
     function configuration($routeProvider, $locationProvider, $httpProvider) {
 
         $httpProvider.defaults.headers.post['Content-Type'] = 'application/json;charset=utf-8';
@@ -41,7 +54,8 @@
             .when("/user/:uid", {
                 templateUrl: 'views/user/profile.view.client.html',
                 controller: 'profileController',
-                controllerAs: 'model'
+                controllerAs: 'model',
+                resolve: { loggedin: checkLoggedIn }
             })
 
             .when("/profile/:uid",{
@@ -111,6 +125,12 @@
                 controller: "FlickrImageSearchController",
                 controllerAs: "model"
             })
+
+            .otherwise({
+                // Default
+                templateUrl: 'views/user/login.view.client.html'
+            });
+
 
     }
 })();

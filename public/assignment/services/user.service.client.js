@@ -10,7 +10,10 @@
 
 
         var api = {
+            "login":login,
             "findUserByCredentials": findUserByCredentials,
+            "logout":logout,
+            "register":register,
             "findUserById": findUserById,
             "createUser": createUser,
             "findUserByUsername": findUserByUsername,
@@ -19,6 +22,17 @@
 
         };
         return api;
+
+        function login(user) {
+            return $http.post("/api/login", user);
+        }
+        function logout() {
+            return $http.post("/api/logout");
+        }
+
+        function register(user) {
+            return $http.post("/api/register", user);
+        }
 
         function findUserById(uid) {
             /*for(var u in users) {

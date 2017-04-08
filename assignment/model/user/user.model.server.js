@@ -14,6 +14,7 @@ module.exports = function () {
         "findUserByCredentials":findUserByCredentials,
         "deleteUser":deleteUser,
         "updateUser":updateUser,
+        "findUserByFacebookId": findUserByFacebookId,
         "setModel":setModel,
         "getModel":getModel
 
@@ -21,6 +22,10 @@ module.exports = function () {
 
     return api;
 
+
+    function findUserByFacebookId(facebookId) {
+        return UserModel.findOne({'facebook.id': facebookId});
+    }
 
 
     function setModel(_model) {

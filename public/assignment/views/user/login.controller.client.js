@@ -3,7 +3,7 @@
         .module("WebAppMaker")
         .controller("loginController", loginController);
 
-    function loginController(UserService, $location) {
+    function loginController(UserService, $location, $rootScope) {
         var vm = this;
 
 
@@ -21,6 +21,7 @@
                         var loginUser = user.data[0];
                         if (loginUser != null) {
                             console.log("uper hit");
+                            $rootScope.currentUser = user;
                             console.log(loginUser._id);
                             $location.url('/profile/' + loginUser._id);
                         } else {
