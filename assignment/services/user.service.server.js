@@ -1,13 +1,18 @@
 module.exports = function (app, userModel) {
+
     app.get("/api/user", findUser);
     app.get("/api/user/:userId", findUserById);
+
     app.put("/api/user/:userId", updateUser);
     app.post("/api/user", createUser);
+
     app.get("/api/user?username=username&password=password", findUserByCredentials);
     app.delete("/api/user/:userId", deleteUser);
 
+
     app.post('/api/logout', logout);
     app.post ('/api/register', register);
+
     app.get ('/api/loggedin', loggedin);
 
     var bcrypt = require("bcrypt-nodejs");
@@ -20,8 +25,10 @@ module.exports = function (app, userModel) {
     };
 
     var passport = require('passport');
+
     var FacebookStrategy = require('passport-facebook').Strategy;
     var LocalStrategy = require('passport-local').Strategy;
+
     app.get('/auth/facebook',passport.authenticate('facebook',{ scope : 'email'}));
 
     passport.serializeUser(serializeUser);
