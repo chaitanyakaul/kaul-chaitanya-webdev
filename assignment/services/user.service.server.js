@@ -29,6 +29,11 @@ module.exports = function (app, userModel) {
     var FacebookStrategy = require('passport-facebook').Strategy;
     var LocalStrategy = require('passport-local').Strategy;
 
+
+    app.post("/api/login", passport.authenticate('local'), login);
+
+
+
     app.get('/auth/facebook',passport.authenticate('facebook',{ scope : 'email'}));
 
     passport.serializeUser(serializeUser);
@@ -37,7 +42,7 @@ module.exports = function (app, userModel) {
 
 
     passport.use(new LocalStrategy(localStrategy));
-    app.post  ('/api/login', passport.authenticate('wam'), login);
+    // app.post  ('/api/login', passport.authenticate('wam'), login);
     app.get('/auth/facebook',passport.authenticate('facebook',{ scope : 'email'}));
     app.get('/auth/facebook/callback',passport.authenticate('facebook', {
         failureRedirect: '/assignment/#/login'
@@ -50,7 +55,7 @@ module.exports = function (app, userModel) {
 
         res.redirect(url);
     });
-    var users = [];
+
 
 
     function facebookStrategy(token, refreshToken, profile, done) {
@@ -92,8 +97,12 @@ module.exports = function (app, userModel) {
                     if(user){
                         req.login(user, function(err) {
                             if(err) {
+                                console.log(user)
                                 res.status(400).send(err);
                             } else {
+
+                                console.log("in the other part")
+                                console.log(user);
                                 res.json(user);
                             }
                         });
@@ -138,6 +147,9 @@ module.exports = function (app, userModel) {
 
     function login(req, res) {
         var user = req.user;
+        console.log("00")
+        console.log(user);
+        console.log("ll")
         res.json(user);
     }
     function logout(req, res) {
@@ -154,10 +166,11 @@ module.exports = function (app, userModel) {
 //localStrategy implementation
     function localStrategy(username, password, done) {
         userModel
-            .findUserByCredentials(username, password)
+            .findUserByUsername(username)
             .then(
                 function(user) {
-                    if(user.username === username && bcrypt.compareSync(user.password === password)) {
+                    if(user && bcrypt.compareSync(password, user.password)) {
+                        console.log("hit hit hit");
                         return done(null, user);
                     } else {
                         return done(null, false);

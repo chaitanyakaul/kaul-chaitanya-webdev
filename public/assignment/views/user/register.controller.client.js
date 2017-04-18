@@ -23,9 +23,9 @@
                     if (vm.user != null) {
                         var user = vm.user
                         $rootScope.currentUser = user;
-                        $location.url("/user/"+user._id);
+                        $location.url("/profile/"+user._id);
 
-                        $location.url("/user/" + vm.user._id);
+                        $location.url("/profile/" + vm.user._id);
                     }
                     else {
                         vm.firstName = angular.copy(vm.user.firstName);

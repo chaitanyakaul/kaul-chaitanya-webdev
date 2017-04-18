@@ -16,11 +16,15 @@ module.exports = function () {
         "updateUser":updateUser,
         "findUserByFacebookId": findUserByFacebookId,
         "setModel":setModel,
-        "getModel":getModel
-
+        "getModel":getModel,
+        "findUserByUsername": findUserByUsername
     };
 
     return api;
+
+    function findUserByUsername(username) {
+        return UserModel.findOne({username: username});
+    }
 
 
     function findUserByFacebookId(facebookId) {

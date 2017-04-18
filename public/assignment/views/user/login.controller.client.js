@@ -13,12 +13,17 @@
             function login(user) {
 
 
-                var promise = UserService.findUserByCredentials(user.username, user.password);
+                var promise = UserService.login(user);
                 promise
                     .then(function (user) {
                         //console.log("fsd");
                         //console.log(user);
-                        var loginUser = user.data[0];
+                        console.log("hit in client")
+
+
+
+                        var loginUser = user.data;
+                        console.log(loginUser)
                         if (loginUser != null) {
                             console.log("uper hit");
                             $rootScope.currentUser = user;
