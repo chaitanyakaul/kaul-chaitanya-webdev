@@ -4,7 +4,9 @@
         .controller("profileController", profileController);
 
     function profileController($routeParams, UserService, $location, $rootScope) {
+        //hold the current instance of the object in the variable vm
         var vm = this;
+        //use AngularJS's routeparams class and pass the current uid to it
         var userId = $routeParams['uid'];
 
 
@@ -20,16 +22,19 @@
                     $location.url("/login");
                 }
                 else {
+                    //copy using the Angular directives from the firstname to user
                     vm.firstName = angular.copy(vm.user.firstName);
                 }
             });
 
         }
 
+        //self invoking function
         init();
 
 
         vm.update = function (newUser) {
+            //call the updateUser service from the Node.JS part of the controller
             var user = UserService.updateUser(userId, newUser);
             //console.log("new user")
             //console.log(newUser)
@@ -41,6 +46,7 @@
         };
 
 
+        //call the logout service from the Node.JS backed server
         vm.logout = logout;
 
         function logout() {
@@ -53,6 +59,7 @@
         }
 
 
+        //call the delete user service from the NodeJS backed server
         vm.delete = function()
 
         {
@@ -63,4 +70,4 @@
 
 
     }
-})();
+})();//iffy

@@ -4,15 +4,16 @@
         .controller("loginController", loginController);
 
     function loginController(UserService, $location, $rootScope) {
+        //hold the current instance of the object in the variable vm
         var vm = this;
 
 
-
+        //this is iffy related call to the annonymous function
         function init() {
             vm.login = login;
             function login(user) {
 
-
+                // create a promise which calls the Node.JS backed code to get the websites of a particular websites.
                 var promise = UserService.login(user);
                 promise
                     .then(function (user) {
@@ -34,9 +35,10 @@
                         }
                     })
                     .catch(function (err) {
+                        //catch the error and print it to the console.
                         vm.error = 'user not found';
                     });
             }
         }init()
     }
-})();
+})();//iffy

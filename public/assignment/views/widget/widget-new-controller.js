@@ -7,7 +7,9 @@
         .controller("WidgetNewController", WidgetNewController);
 
     function WidgetNewController($routeParams, $location, WidgetService) {
+        //hold the current instance of the object in the variable vm
         var vm = this;
+        //use AngularJS's routeparams class and pass the current uid to it
         vm.userId = $routeParams.uid;
         vm.websiteId = $routeParams.wid;
         vm.pageId = $routeParams.pid;
