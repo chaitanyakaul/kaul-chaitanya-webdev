@@ -4,6 +4,7 @@
 module.exports = function (model) {
     var mongoose = require('mongoose');
 
+    //the widget schema for the MongoDB system call
     var WidgetSchema = mongoose.Schema({
             _page: {type: mongoose.Schema.Types.ObjectId, ref: 'PageModel'},
             type: {type:String, enum:['HEADER','IMAGE','YOUTUBE','HTML','TEXT']},
@@ -27,6 +28,7 @@ module.exports = function (model) {
         {collection: 'widgets'});
 
 
+    //recursive implementation of delete function which is propogated to the server
     WidgetSchema.post('remove', function(next) {
         console.log("hit in remove section of widget");
         var pageModel = model.pageModel.getModel();
