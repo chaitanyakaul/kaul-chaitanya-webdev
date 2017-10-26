@@ -1,5 +1,6 @@
 module.exports = function (app, userModel) {
-
+    //this serves as the API related calls to different methods
+    //according to : the call directed to specific methods
     app.get("/api/user", findUser);
     app.get("/api/user/:userId", findUserById);
 
@@ -17,6 +18,7 @@ module.exports = function (app, userModel) {
 
     var bcrypt = require("bcrypt-nodejs");
 
+    //store facebook related user configs so as to implement their core APi
     var facebookConfig = {
         clientID: process.env.FACEBOOK_CLIENT_ID,
         clientSecret: process.env.FACEBOOK_CLIENT_SECRET,
@@ -36,6 +38,7 @@ module.exports = function (app, userModel) {
 
     app.get('/auth/facebook',passport.authenticate('facebook',{ scope : 'email'}));
 
+    //call passportJS core methods to serialize and deserialize the user
     passport.serializeUser(serializeUser);
     passport.deserializeUser(deserializeUser);
     passport.use(new FacebookStrategy(facebookConfig, facebookStrategy));
@@ -48,8 +51,6 @@ module.exports = function (app, userModel) {
         failureRedirect: '/assignment/#/login'
     }), function(req, res){
 
-
-
         var url = '/assignment/#!/user/' + req.user._id.toString()+'/website';
         console.log(url)
 
@@ -59,6 +60,7 @@ module.exports = function (app, userModel) {
 
 
     function facebookStrategy(token, refreshToken, profile, done) {
+        //find the specific user by his profile ID using the userModel at the monGoDB schema
         userModel
             .findUserByFacebookId(profile.id)
             .then(function(user) {
@@ -76,6 +78,7 @@ module.exports = function (app, userModel) {
                             },
                             email: profile.emails[0].value
                         };
+                        //call the createUser method using the MongoDB model
                         userModel
                             .createUser(newFacebookUser)
                             .then(function (user) {
@@ -84,12 +87,14 @@ module.exports = function (app, userModel) {
                     }
                 },
                 function(err) {
+                //report any error to the console end.
                     if (err) { return done(err); }
                 });
     }
 
     function register (req, res) {
         var user = req.body;
+        //encrypt the password with bcrypt and pass it to the user model
         user.password = bcrypt.hashSync(user.password);
         userModel
             .createUser(user)
@@ -113,9 +118,11 @@ module.exports = function (app, userModel) {
 
 
     function serializeUser(user, done) {
+        //call seriailizeuser method.
         done(null, user);
     }
     function deserializeUser(user, done) {
+        //call deserializeUser to decrypt the user and the password
         userModel
             .findUserById(user._id)
             .then(
@@ -169,6 +176,7 @@ module.exports = function (app, userModel) {
             .findUserByUsername(username)
             .then(
                 function(user) {
+                    //decrypt the user and compare the checksum of the password with the entered password
                     if(user && bcrypt.compareSync(password, user.password)) {
                         console.log("hit hit hit");
                         return done(null, user);
@@ -184,18 +192,6 @@ module.exports = function (app, userModel) {
 
 
 
-
-
-
-    /*     for(var u in users) {
-             var user = users[u];
-             if( user._id === userId ) {
-                 users.splice(u,1);
-                 res.sendStatus(200);
-                 return;
-             }
-         }
-         res.sendStatus(404);*/
 
 
     function updateUser(req, res) {
@@ -214,21 +210,6 @@ module.exports = function (app, userModel) {
             });
 
 
-
-
-
-
-     /*   console.log(newUser);
-        for (var u in users) {
-            if (users[u]._id == userId) {
-                users[u].firstName = newUser.firstName;
-                users[u].lastName = newUser.lastName;
-                users[u].email = newUser.email;
-                users[u].password = newUser.password;
-                res.json(users[u]);
-                return;
-            }
-        }*/
     }
 
     function createUser(req, res) {
@@ -247,19 +228,10 @@ module.exports = function (app, userModel) {
 
 
             });
-        //user._id = getRandomInt(100, 999).toString();
-/*
-        users.push(user);
-        res.json(user);*/
-
     }
 
 
-    function getRandomInt(min, max) {
-        min = Math.ceil(min);
-        max = Math.floor(max);
-        return Math.floor(Math.random() * (max - min)) + min;
-    }
+
 
 
     function findUserById(req, res) {
@@ -276,11 +248,7 @@ module.exports = function (app, userModel) {
                 res.sendStatus(400).send(err);
             });
 
-/*
-        var user = users.find(function (u) {
-            return u._id == userId;
-        });
-        res.json(user);*/
+
     }
 
     function findUser(req, res) {
@@ -305,15 +273,7 @@ module.exports = function (app, userModel) {
                 res.sendStatus(400);
             });
 
-       /* var user = users.find(function (u) {
-            return u.username == req.query.username;
-        });
-        console.log(user);
-        if (user) {
-            res.json(user);
-        } else {
-            res.sendStatus(404);
-        }*/
+
     }
 
     function findUserByCredentials(req, res) {
@@ -340,16 +300,6 @@ module.exports = function (app, userModel) {
                 res.sendStatus(400).send(err)
             });
 
-      /*  var user = null;
-        user = users.find(function (u) {
-            return u.username == username && u.password == password;
-        });
-        if (user != null) {
-            res.json(user);
-        }
-        else {
-            res.json(null);
 
-        }*/
     }
 }

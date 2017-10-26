@@ -7,9 +7,4 @@ module.exports = function (app) {
     require("./services/widget.service.server.js")(app, model.widgetModel)
     var abc = model.widgetModel;
 
-
-
-
-   // require("./services/page.service.server.js")(app);
-  //  require("./services/widget.service.server.js")(app);
 };

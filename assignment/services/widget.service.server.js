@@ -6,8 +6,10 @@
  */
 module.exports = function (app, widgetModel) {
 
+    //multer for multipart/form date
     var multer = require('multer');
 
+    //the storage object contains the url of the uploaded file as well as different file related parameters
     var storage = multer.diskStorage({
         destination: function (req, file, cb) {
 
@@ -21,8 +23,11 @@ module.exports = function (app, widgetModel) {
         }
     });
 
+    //upload object calls the multer storage module ans passes the storage object
     var upload = multer({storage: storage});
 
+
+    //RESTful APIs for different widget related methods.
     app.post("/api/upload", upload.single('myFile'), uploadImage);
     app.post("/api/page/:pageId/widget_header", createHeaderWidget);
     app.get("/api/page/:pageId/widget", findWidgetsByPageId);
@@ -40,6 +45,7 @@ module.exports = function (app, widgetModel) {
         [];
 
 
+    //method for creating a header widget by passing the pageId and widgetType
     function createHeaderWidget(req, res) {
         var pageId = req.params.pageId;
         var widget = new Object();
@@ -48,6 +54,7 @@ module.exports = function (app, widgetModel) {
         widget.page = pageId;
         //widgets.push(widget);
 
+        //call the widgetModel and pass the widget to it along with the pageID
         widgetModel
             .createWidget(pageId, widget)
             .then(function (widget){
@@ -64,14 +71,13 @@ module.exports = function (app, widgetModel) {
     }
 
 
+    //method for creating a new HTML widget
     function createHtmlWidget(req, res) {
         var pageId = req.params.pageId;
         var widget = new Object();
         //widget._id = getRandomInt(100, 999).toString();
         widget.type = "HTML";
         widget.page = pageId;
-        //widgets.push(widget);
-        //res.send(widget._id);
 
         widgetModel
             .createWidget(pageId, widget)

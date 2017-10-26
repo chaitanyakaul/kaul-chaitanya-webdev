@@ -2,26 +2,18 @@
  * Created by chaitanyakaul on 26/02/17.
  */
 module.exports = function (app, websiteModel) {
+
+    //all the RESTful API method calls for managing a particular website
     app.post("/api/user/:userId/website", createWebsite);
     app.get("/api/user/:userId/website", findWebsitesByUser);
     app.get("/api/website/:websiteId", findWebsiteById);
     app.put("/api/website/:websiteId", updateWebsite);
     app.delete("/api/website/:websiteId", deleteWebsite);
 
+    //global array to hold all the websites for a particular user.
     var websites = [];
     function findWebsiteById(req, res) {
-        /*for (var w in websites) {
-         if (websites[w]._id === wid) {
-         return angular.copy(websites[w]);
-         }
-         }
-         return null;*/
 
-        /*var websiteId = req.params.websiteId;
-        var website = websites.find(function (websiteObject) {
-            return websiteObject._id == websiteId;
-        });
-        res.json(website);*/
 
         var websiteId = req.params.websiteId;
         websiteModel
@@ -37,20 +29,15 @@ module.exports = function (app, websiteModel) {
     function deleteWebsite(req, res) {
 
         var websiteId = req.params.websiteId;
-
-       /* for (var w in websites) {
-            if (websites[w]._id === websiteId) {
-                websites.splice(w, 1);
-                res.sendStatus(200);
-                return;
-            }
-        }*/
+        //call the website model and delete the particular website
        websiteModel
            .deleteWebsite(websiteId)
            .then (function (response){
+               //send a HTTP 200 response code saying the request is a success
                res.sendStatus(200)
            }, function (error)
            {
+               //report any issue back to the console
                console.log(error)
                res.sendStatus(404)
            })
@@ -62,6 +49,7 @@ module.exports = function (app, websiteModel) {
     function updateWebsite(req, res) {
         var websiteId = req.params.websiteId;
         var updater = req.body;
+        //update a particular website using it's website ID and the updated website
         websiteModel
             .updateWebsite(websiteId, updater)
             .then(function(response)
@@ -71,22 +59,11 @@ module.exports = function (app, websiteModel) {
             {
                 res.sendStatus(400);
             })
-
-
-       /* console.log(updater);
-        for (var w in websites) {
-            if (websites[w]._id == websiteId) {
-                websites[w].name = updater.name;
-                websites[w].description = updater.description;
-                res.sendStatus(200);
-            }
-        }*/
-
-
     }
 
     function createWebsite(req, res) {
 
+        //call the createWebsite method at MongoDB and pass a new website and the user
         var userId = req.params.userId;
         var website = req.body;
         var new_website = {
@@ -96,6 +73,7 @@ module.exports = function (app, websiteModel) {
             description: website.description
         };
 
+        //MongoDB based method call
         websiteModel
             .createWebsiteForUser(userId,new_website)
             .then(function(response){
@@ -106,15 +84,15 @@ module.exports = function (app, websiteModel) {
                     res.sendStatus(400);
                 }
             )
-        /*websites.push(new_website);
-        res.json(new_website);*/
-
     }
 
+    //find website for a specific user by decapusulating the req
     function findWebsitesByUser(req, res) {
 
+        //the req object also contains the userid
         var user_id = req.params.userId;
 
+        //call the mongoDB based interface.
         websiteModel
             .findAllWebsitesForUser(user_id)
             .then (function (response)
@@ -124,18 +102,6 @@ module.exports = function (app, websiteModel) {
             {
                 res.sendStatus(404)
             })
-
-
-
-
-        /*  var sites = [];
-        for (var w in websites) {
-            if (websites[w].developerId === user_id) {
-                sites.push(websites[w]);
-            }
-        }
-
-        res.json(sites);*/
 
 
     }
