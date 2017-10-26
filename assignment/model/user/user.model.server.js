@@ -22,21 +22,24 @@ module.exports = function () {
 
     return api;
 
+    //MongoDB call to create a new User
     function findUserByUsername(username) {
         return UserModel.findOne({username: username});
     }
 
-
+    //MongoDB call to find a user by facebook id
     function findUserByFacebookId(facebookId) {
         return UserModel.findOne({'facebook.id': facebookId});
     }
 
-
+    //Set the current model using the current instance of the object.
     function setModel(_model) {
         model = _model;
         UserSchema = require('./user.schema.server.js')(_model);
         UserModel = mongoose.model('UserModel', UserSchema);
     }
+
+    //get the model
     function getModel()
     {
         return UserModel;
@@ -59,14 +62,14 @@ module.exports = function () {
 }
 
 
+    //update the User with the new user object by first checking the user id
     function updateUser(userId, user)
-
     {
-
         return UserModel.update({_id:userId},{$set:user});
 
     }
 
+    //delete the user according to the user id passed
     function deleteUser(userId)
     {
         return UserModel.findByIdAndRemove(userId, function (err,users) {

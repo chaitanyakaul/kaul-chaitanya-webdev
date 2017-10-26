@@ -1,6 +1,7 @@
 module.exports = function () {
 
 
+    //the API object for a website has the RESTful parameters
     var api = {
         "createWebsiteForUser": createWebsiteForUser,
         "findAllWebsitesForUser": findAllWebsitesForUser,
@@ -22,11 +23,14 @@ module.exports = function () {
 
 
 
+    //this method sets the current instance of the model
     function setModel(_model) {
         model = _model;
         WebsiteSchema = require('./website.schema.server.js')(_model);
         WebsiteModel = mongoose.model('WebsiteModel', WebsiteSchema);
     }
+
+    //this method gets the model which is currently instantiated
     function getModel()
     {
         return WebsiteModel;
@@ -34,6 +38,8 @@ module.exports = function () {
 
 function createWebsiteForUser(userId, website)
 {
+    //return the Website Model by synchronising the process of creating a website and then associating
+    //the website to a particular user.
 return WebsiteModel
     .create(website)
     .then(

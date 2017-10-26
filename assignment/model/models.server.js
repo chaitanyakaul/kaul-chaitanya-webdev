@@ -16,6 +16,7 @@ module.exports = function() {
         };
 
 
+    //the setter methods for the respective models.
     userModel.setModel(model);
     websiteModel.setModel(model);
     pageModel.setModel(model);
